@@ -1,0 +1,15 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  order_for: MyString
+  rest_name: MyString
+  menu: MyText
+  create: 2019-04-09 20:01:50
+  user: one
+
+two:
+  order_for: MyString
+  rest_name: MyString
+  menu: MyText
+  create: 2019-04-09 20:01:50
+  user: two

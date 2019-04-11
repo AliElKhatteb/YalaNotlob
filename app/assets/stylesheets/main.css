@@ -73,9 +73,17 @@ form {
     }
   }
   #LoginFacebook{
-      background-color: #1E90FF;
+      background-color: #3b5998;
       
   }
   #LoginGmail{
       background-color: #DC143C	;
-}
+  }
+  #LoginTwitter{
+      background-color: #38A1F3	;
+  }
+
+  #LoginLinkedin{
+      background-color: #0077B5	;
+  }
+  

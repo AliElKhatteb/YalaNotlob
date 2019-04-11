@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>Notlob</title>
+    <title>YallaNotlob</title>
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
 
@@ -10,6 +10,32 @@
   </head>
 
   <body>
+  <% if user_signed_in? %>
+            <div class="topnav">
+                    <a class="active" href="/">Home</a>
+                    <a href="/Friends">Friends</a>
+                    <a href="/Groups">Groups</a>
+                    <a href="/Orders">Orders</a>
+                 
+                   
+                
+                  
+                  </div>  
+
+                  <div class="bell-div">
+                    <i class="fa fa-bell" style="font-size:24px;color:red"></i>
+   <a> <%= link_to('Logout', destroy_user_session_path, method: :delete) %></a>
+           
+                    <a name="loginname" title="Contact" value="Contact"><%=current_user.name%></a>
+
+            </div>  
+<% else %>
+  <li>
+  <%= link_to('', new_user_session_path)  %>  
+  </li>
+  <% end %>
     <%= yield %>
+ 
+   
   </body>
 </html>
