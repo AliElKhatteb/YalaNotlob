@@ -1,5 +1,7 @@
 Rails.application.routes.draw do
   get '/' ,to: 'home#index'
+  get '/orders/:id' ,to: 'items#view_items'
+  post '/orders/:id',to: 'items#create_item'
 
  # devise_for :users
 #devise_for :users, controllers: { omniauth_callbacks: 'users/omniauth_callbacks' }

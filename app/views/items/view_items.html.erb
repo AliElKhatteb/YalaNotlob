@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<head>
+    <link rel="stylesheet" type="text/css" href="../assets/css/ordrDetalis.css">.
+</head>
+<body>
+  
+<table style="width:50%">
+    <tr>
+      <th>Person</th>
+      <th>Item</th>
+      <th>Amout</th>
+      <th>Price</th>
+      <th>Comment</th>
+
+    </tr>
+
+    <% @items.each do |item| %>
+      <tr>
+        <td><%= item.user.name %></td>
+        <td><%= item.item_name %></td>
+        <td><%= item.item_amount %></td>
+        <td><%= item.price %></td>
+        <td><%= item.comment %></td>
+     
+      </tr>
+    <% end %>
+  </table> <br/>
+  <%= form_with model:  @item do |form| %>
+       <label for="Item"><b>Item</b></label>
+        <input type="text" name="name" >
+      
+        <label for="Item"><b>Amount</b></label>
+      
+        <div class="value-button" id="decrease" onclick=" decreaseAmount()" value="Decrease Value">-</div>
+        <input type="number" id="number" value="0"name="amount" />
+        <div class="value-button" id="increase" onclick=" increaseAmount()" value="Increase Value">+</div>
+        <br>
+         
+        <label for="Item"><b>Price</b></label>
+      
+        <div class="value-button" id="decrease" onclick="decreasePrice()" value="Decrease Value">-</div>
+        <input type="number" id="price" value="0" name="price"/>
+        <div class="value-button" id="increase" onclick="increasePrice()" value="Increase Value">+</div>
+        <br>
+        <label for="Item"><b>Comment</b></label>
+        <input type="text"  name="comment">
+        <input type="submit" value="add">
+      
+<% end %>
+  <a href="#" class="popup" id="invited">10 friends invited click to view</a>
+  <br/>
+  <a href="#" class="popup" id="joined">10 friends joined click to view</a>
+<div id="divpop">
+  <p>fdsfssd </p>
+
+</div>
+</body>
+<script sr="../assets/javascripts/ordrDetalis.js"></script>
