@@ -36,15 +36,22 @@ tr:nth-child(even) {
     <tr>
       <td><%= order.order_for %></td>
       <td><%= order.rest_name %></td>
-      <td> oeee </td>
-      <td> oeee </td>
-      <td> oeee </td>
-      
-      <td><%= link_to "cancel",order_path_delete_url(order.id),method: "delete" %>
-  
-      <%= link_to "finish",order_path_finish_url(order.id),method: "finish" %>
+      <td><%= order.invited %></td>
+      <td><%= order.joined %></td>
+      <td><%= order.status %></td>
+      <td>
       <%= link_to "view",order_items_url(order.id),method: "view_items" %>
-      </td>
+      <% if order.status == "waiting"%>
+
+  
+      <%= link_to "cancel",order_path_delete_url(order.id),method: "delete" %>
+      <%= link_to "finish",order_path_finish_url(order.id),method: "finish" %>
+
+     <% end %>
+     </td>
+
+     
+
 
 
     </tr>
