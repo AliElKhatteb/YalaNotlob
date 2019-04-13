@@ -1,14 +1,10 @@
 Rails.application.routes.draw do
   get '/' ,to: 'home#index'
-  get '/orders/all' , to: 'orders#view_all'
-#   delete  '/orders/all' 
-#     to: 'orders#cancel', :locals => {:id => params[:id]}
-
- delete '/orders/:id' , to: 'orders#cancel', as: "order_path"
-
-  get '/orders/:id' ,to: 'items#view_items'
-  post '/orders/:id',to: 'items#create_item'
-  get '/orders/all' , to: 'orders#view_all'
+  get '/orders' , to: 'orders#view_all'
+  delete '/orders/:id' , to: 'orders#cancel', as: "order_path_delete"
+  post '/orders/:id' , to: 'orders#finish', as: "order_path_finish"
+  post '/orders/:id/items',to: 'items#create_item'
+  get '/orders/:id/items' ,to: 'items#view_items' , as: "order_items"
 
  # devise_for :users
 #devise_for :users, controllers: { omniauth_callbacks: 'users/omniauth_callbacks' }

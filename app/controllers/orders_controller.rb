@@ -3,10 +3,13 @@ class OrdersController < ApplicationController
         @orders = Order.where(:user_id => current_user.id)
     end
     def finish
+        order=Order.find(params[:id])
+        order.update_attribute(:status, "finished")
+        redirect_to action: "view_all" 
+
     end
     def cancel()
-        p "thhhhhis isss idddd"
-        puts params
+    
         Order.find(params[:id]).destroy
         redirect_to action: "view_all" 
 

@@ -40,7 +40,11 @@ tr:nth-child(even) {
       <td> oeee </td>
       <td> oeee </td>
       
-      <td><%= link_to "cancel",order_path_url(2),method: "delete" %></td>
+      <td><%= link_to "cancel",order_path_delete_url(order.id),method: "delete" %>
+  
+      <%= link_to "finish",order_path_finish_url(order.id),method: "finish" %>
+      <%= link_to "view",order_items_url(order.id),method: "view_items" %>
+      </td>
 
 
     </tr>
