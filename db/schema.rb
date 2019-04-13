@@ -10,15 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_04_09_215430) do
-
-  create_table "friends", force: :cascade do |t|
-    t.string "friend_email"
-    t.integer "user_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["user_id"], name: "index_friends_on_user_id"
-  end
+ActiveRecord::Schema.define(version: 2019_04_13_164543) do
 
   create_table "groups", force: :cascade do |t|
     t.string "group_name"
@@ -56,7 +48,17 @@ ActiveRecord::Schema.define(version: 2019_04_09_215430) do
     t.integer "user_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "invited"
+    t.integer "joined"
+    t.string "status"
     t.index ["user_id"], name: "index_orders_on_user_id"
+  end
+
+  create_table "user_friends", force: :cascade do |t|
+    t.integer "user_id"
+    t.integer "friend_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "users", force: :cascade do |t|
