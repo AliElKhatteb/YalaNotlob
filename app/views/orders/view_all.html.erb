@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+<head>
+<style>
+table {
+  font-family: arial, sans-serif;
+  border-collapse: collapse;
+  width: 100%;
+}
+
+td, th {
+  border: 1px solid #dddddd;
+  text-align: left;
+  padding: 8px;
+}
+
+tr:nth-child(even) {
+  background-color: #dddddd;
+}
+</style>
+</head>
+<body>
+
+<h1>Orders</h1>
+
+<table>
+  <tr>
+    <th>Order</th>
+    <th>Resturant</th>
+    <th>Invited</th>
+    <th>Joined</th>
+    <th>Status</th>
+    <th>Actions</th>
+  </tr>
+  <% @orders.each do |order| %>
+    <tr>
+      <td><%= order.order_for %></td>
+      <td><%= order.rest_name %></td>
+      <td> oeee </td>
+      <td> oeee </td>
+      <td> oeee </td>
+      
+      <td><%= link_to "cancel",order_path_url(2),method: "delete" %></td>
+
+
+    </tr>
+  <% end %>
+</table>
+
+</body>
