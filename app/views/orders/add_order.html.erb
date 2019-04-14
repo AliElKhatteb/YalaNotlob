@@ -16,7 +16,7 @@
      <%= form_with model:  @order do |form| %>
 			  
             <label for="country">Order for</label>
-			<select id="country" name="country">
+			<select id="country" name="order_for">
 			  <option value="lnuch">Lunch</option>
 			  <option value="breakfast">Breakfast</option>
 			</select>
@@ -29,10 +29,9 @@
             
             <label for="lname">Groups</label>
             <input type="text" id="lname" name="groups" placeholder="Your last name..">
-            <%= link_to "add" , order_addfriend_url, method:"add" %>
+			<%= link_to "AddFriendOrGroup", addFriendGroup_url%>
 
 			<input type="file" name="pic" accept="image/*">
-            <input type="submit">
 
 			<input type="submit" value="Submit">
 
