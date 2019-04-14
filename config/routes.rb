@@ -1,4 +1,7 @@
 Rails.application.routes.draw do
+  get 'friends', to: 'friends#friendhome'
+  post 'friends', to: 'friends#adduser'
+  delete '/friends/:id', to: 'friends#destroy', as:"delete_user"
   get '/' ,to: 'home#index'
   get '/orders' , to: 'orders#view_all'
   delete '/orders/:id' , to: 'orders#cancel', as: "order_path_delete"
