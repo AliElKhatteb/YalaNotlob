@@ -1,7 +1,10 @@
 Rails.application.routes.draw do
   get '/' ,to: 'home#index'
-  get '/orders/:id' ,to: 'items#view_items'
-  post '/orders/:id',to: 'items#create_item'
+  get '/orders' , to: 'orders#view_all'
+  delete '/orders/:id' , to: 'orders#cancel', as: "order_path_delete"
+  post '/orders/:id' , to: 'orders#finish', as: "order_path_finish"
+  post '/orders/:id/items',to: 'items#create_item'
+  get '/orders/:id/items' ,to: 'items#view_items' , as: "order_items"
 
   get '/orders' , to: 'orders#view_orders'
   post '/orders' , to: 'order#create_orders'

@@ -23,10 +23,13 @@
                   </div>  
 
                   <div class="bell-div">
-                    <i class="fa fa-bell" style="font-size:24px;color:red"></i>
+                  <i class="fa fa-bell" style="font-size:24px;color:red"></i>
+
+
+              <%= image_tag user_avatar(current_user, 40), class: "rounded-circle" %>
    <a> <%= link_to('Logout', destroy_user_session_path, method: :delete) %></a>
            
-                    <a name="loginname" title="Contact" value="Contact"><%=current_user.name%></a>
+                    <a name="loginname" title="Contact" value="Contact" style=" "><%=current_user.name%></a>
 
             </div>  
 <% else %>
