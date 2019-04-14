@@ -3,6 +3,9 @@ Rails.application.routes.draw do
   get '/orders/:id' ,to: 'items#view_items'
   post '/orders/:id',to: 'items#create_item'
 
+  get '/orders' , to: 'orders#view_orders'
+  post '/orders' , to: 'order#create_orders'
+  # order_addfriend_url
  # devise_for :users
 #devise_for :users, controllers: { omniauth_callbacks: 'users/omniauth_callbacks' }
  devise_for :users, :controllers => { :omniauth_callbacks => "users/omniauth_callbacks" }
