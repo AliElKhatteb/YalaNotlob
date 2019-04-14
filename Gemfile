@@ -3,11 +3,16 @@ git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
 ruby '2.6.0'
 gem 'devise'
+# sudo yum install ImageMagick LibMagickcore-dev LibMagickwand-dev
+gem 'rmagick', '~>2.13.2'
+
 gem 'devise-bootstrap-views', '~> 1.0'
 gem 'omniauth-facebook'
 gem 'omniauth-google-oauth2'
 gem 'omniauth-twitter'
 gem 'omniauth-linkedin'
+gem 'mini_magick', '~> 4.9', '>= 4.9.2'
+gem 'gravatar_image_tag', github: 'mdeering/gravatar_image_tag'
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '~> 5.2.3'
 # Use sqlite3 as the database for Active Record
