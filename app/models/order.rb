@@ -3,7 +3,7 @@ class Order < ApplicationRecord
   has_many :items, :dependent => :delete_all
 
 
-  has_many :users
+  # has_many :users
   has_many :groups
 
 end
