@@ -8,7 +8,17 @@ class FriendsController < ApplicationController
     def adduser
         puts "here"
         puts params[:adduser]
-        @u=User.find_by(email:params[:adduser]).id
+        begin 
+            @u=User.find_by(email:params[:adduser]).id
+        rescue
+            redirect_to('/friends')
+        ensure
+           @doesntexsist="user not found"
+        end
+
+
+
+
         @addfrienduser=UserFriend.new
         if @u!=nil
             @addfrienduser.user_id=current_user.id

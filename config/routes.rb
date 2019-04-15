@@ -15,8 +15,9 @@ Rails.application.routes.draw do
   
   post '/orders/addfriend' ,to: 'ordres#addFriendGroup' ,as: "addFriendGroup"
   # order_addfriend_url
- # devise_for :users
-#devise_for :users, controllers: { omniauth_callbacks: 'users/omniauth_callbacks' }
+
+  get 'event', to: 'events#index'
+  mount ActionCable.server => '/cable'
  devise_for :users, :controllers => { :omniauth_callbacks => "users/omniauth_callbacks" }
 
 
@@ -24,5 +25,8 @@ Rails.application.routes.draw do
 #  delete 'sign_out', :to => 'devise/sessions#destroy', :as => :destroy_user_session
 #end
     # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
+
+
+
 end
 
