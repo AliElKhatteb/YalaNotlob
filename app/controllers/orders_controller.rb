@@ -1,17 +1,52 @@
 class OrdersController < ApplicationController
-    def view_all
-        @orders = Order.where(:user_id => current_user.id)
+    def new
+        @order=Order.new
     end
-    def finish
+    # def show
+    #     # @orders = Order.where(:user => current_user)
+
+
+    #     @items = Item.where(:order_id => params[:id])
+    #        #note::check if select return null  render the page with empty array
+    #     #catch error of null
+    # end
+
+    def create
+        @order = Order.new
+        @order.rest_name = params[:rest_name]
+        @order.order_for = params[:order_for]
+        @order.status = "waiting"
+        @order.user =  current_user 
+
+        if @order.save
+            redirect_to  orders_path 
+          else
+            render 'new'
+          end
+    end 
+    def index
+        puts "viiiiiiiiewwwww"
+
+        @orders = Order.where(:user => current_user)
+    end
+    def update
+        puts "finnnnnnishhhhhh"
         order=Order.find(params[:id])
         order.update_attribute(:status, "finished")
-        redirect_to action: "view_all" 
+        redirect_to orders_path
 
     end
-    def cancel()
+    def destroy
     
         Order.find(params[:id]).destroy
-        redirect_to action: "view_all" 
+        redirect_to orders_path
+
+    end
+    def addFriendGroup
+        params[:friends]
+        redirect_to new_order_path
 
     end
 end
+
+

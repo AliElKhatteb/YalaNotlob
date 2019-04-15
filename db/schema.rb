@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_04_13_190805) do
+ActiveRecord::Schema.define(version: 2019_04_14_220226) do
 
   create_table "active_storage_attachments", force: :cascade do |t|
     t.string "name", null: false
@@ -31,6 +31,14 @@ ActiveRecord::Schema.define(version: 2019_04_13_190805) do
     t.string "checksum", null: false
     t.datetime "created_at", null: false
     t.index ["key"], name: "index_active_storage_blobs_on_key", unique: true
+  end
+
+  create_table "friends", force: :cascade do |t|
+    t.string "friend_email"
+    t.integer "user_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["user_id"], name: "index_friends_on_user_id"
   end
 
   create_table "groups", force: :cascade do |t|
@@ -59,6 +67,15 @@ ActiveRecord::Schema.define(version: 2019_04_13_190805) do
     t.datetime "updated_at", null: false
     t.index ["order_id"], name: "index_items_on_order_id"
     t.index ["user_id"], name: "index_items_on_user_id"
+  end
+
+  create_table "order_users", force: :cascade do |t|
+    t.integer "order_id"
+    t.integer "user_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["order_id"], name: "index_order_users_on_order_id"
+    t.index ["user_id"], name: "index_order_users_on_user_id"
   end
 
   create_table "orders", force: :cascade do |t|
