@@ -9,18 +9,28 @@
         <form class="ls">
                 <fieldset>
                 <legend>Latest Orders:</legend>
-                <a href="#">The Order and it's date</a>
+                <% @order.each do |order| %>
+                <a href="#"><%= order.order_for %></a>
+                on
+                <a href="#"><%= order.create %></a>
+                <br></br>
+                <%end%>
                 </fieldset>
+
         </form>
 
-
-        <!--Friends activity-->
+    
         <form class="factivity">
                 <fieldset>
-                <legend>Frinds Activity:</legend>
-                <a href="#">Name </a>has created <a href="#">Order</a>for lunch from<a href="#">RestaurantName</a>
+                <legend> Friends Activity:</legend>
+                <% @orderfriend.each do |order|%>
+                <b ><%= User.find_by_id(order.user_id).name %></b>  has created for <a href="#"><%= order.order_for %></a> from<a href="#"><%= order.rest_name %></a>
+                <br></br>
+
+                <%end%>
                 </fieldset>
         </form>
+       
     </div>
 
     </body>

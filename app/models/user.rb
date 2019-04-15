@@ -4,9 +4,10 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
 
-  has_many :groups
-  has_many :friends
-  has_many :orders
+  has_many :groups , dependent: :destroy
+  has_many :friends ,  dependent: :destroy
+  has_many :orders  ,  dependent: :destroy
+  has_one_attached :avatar
 
 
 devise :omniauthable,:omniauth_providers => [:google_oauth2, :facebook, :twitter, :linkedin]

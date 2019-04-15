@@ -1,0 +1,51 @@
+<!Doctype html>
+<html>
+   <head>
+		 <link rel="stylesheet" href="addorder.css">
+		 <link rel="stylesheet" href="friends_activity.css">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+   </head>
+   <body>
+	   
+	
+	   
+	   
+	<!--the form-->
+	 <div class="container">
+     <%= form_with model:  @order do |form| %>
+			  
+            <label for="country">Order for</label>
+			<select id="country" name="order_for">
+			  <option value="lnuch">Lunch</option>
+			  <option value="breakfast">Breakfast</option>
+			</select>
+			  
+			<label for="fname">From</label>
+			<input type="text" id="fname" name="rest_name" placeholder="Your name..">
+
+			<label for="lname">Friends</label>
+			<input type="text" id="lname" name="friends" placeholder="Your last name..">
+            
+            <label for="lname">Groups</label>
+            <input type="text" id="lname" name="groups" placeholder="Your last name..">
+
+			<input type="file" name="pic" accept="image/*">
+
+			<input type="submit" value="Submit">
+
+            <% end %>
+	 </div> 
+	 
+
+	 <!--the field set-->
+	 <form class="fs">
+		<fieldset>
+		 <legend>Friends invited:</legend>
+		 Friend Name: <input type="text"><br>
+	   <button class="btn danger">Remove</button>
+		</fieldset>
+	 </form>
+
+   </body>
+</html>
