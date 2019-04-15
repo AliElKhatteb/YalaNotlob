@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_04_14_234459) do
+ActiveRecord::Schema.define(version: 2019_04_15_171854) do
 
   create_table "active_storage_attachments", force: :cascade do |t|
     t.string "name", null: false
@@ -52,7 +52,9 @@ ActiveRecord::Schema.define(version: 2019_04_14_234459) do
     t.integer "group_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "user_id"
     t.index ["group_id"], name: "index_groups_members_on_group_id"
+    t.index ["user_id"], name: "index_groups_members_on_user_id"
   end
 
   create_table "items", force: :cascade do |t|
@@ -76,6 +78,15 @@ ActiveRecord::Schema.define(version: 2019_04_14_234459) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["order_id"], name: "index_notifications_on_order_id"
+  end
+
+  create_table "order_users", force: :cascade do |t|
+    t.integer "order_id"
+    t.integer "user_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["order_id"], name: "index_order_users_on_order_id"
+    t.index ["user_id"], name: "index_order_users_on_user_id"
   end
 
   create_table "orders", force: :cascade do |t|

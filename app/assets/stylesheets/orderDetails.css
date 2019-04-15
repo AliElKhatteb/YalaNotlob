@@ -1,3 +1,4 @@
+
 table, th, td {
     border: 1px solid black;
   }
@@ -7,9 +8,7 @@ table, th, td {
     text-align: center;
     padding-top: 50px;
   } */
-  .divpop {
-
-  }
+  
   .value-button {
     display: inline-block;
     border: 1px solid #ddd;
@@ -78,3 +77,4 @@ table, th, td {
       -webkit-appearance: none;
       margin: 0;
   }
+

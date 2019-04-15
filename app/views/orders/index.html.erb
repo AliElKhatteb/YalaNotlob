@@ -40,12 +40,12 @@ tr:nth-child(even) {
       <td><%= order.joined %></td>
       <td><%= order.status %></td>
       <td>
-      <%= link_to "view",order_items_url(order.id),method: "view_items" %>
-      <% if order.status == "waiting"%>
+      <%= link_to "view" , order_items_path(order.id) %>
+      <% if order.status == "waiting" %>
 
   
-      <%= link_to "cancel",order_path_delete_url(order.id),method: "delete" %>
-      <%= link_to "finish",order_path_finish_url(order.id),method: "finish" %>
+      <%= link_to "cancel" ,order_path(order.id),method: "delete" %>
+      <%= link_to "finish"  ,order_path(order.id),method: "put" %>
 
      <% end %>
      </td>
