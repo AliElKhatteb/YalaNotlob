@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+
+<html>
+
+<body> 
+                <div class="body-div">
+                        <div class="space">
+                            </div>
+                    <h1>Groups</h1>
+                    <div class="search-group">
+                    <%= form_with scope: :group, url: groups_path, local: true do |form| %>
+
+                        <%= form.label :group_name %><br>
+                        <input type="text" name="group_name">    
+                        
+                        <%= form.submit %>
+<% end %>
+    
+                    </div>
+                                    </div>    
+                
+                <div class="container-div"> 
+                    <div class="inner-div">
+                        <fieldset class="inner-div">
+                            <legend class="legend-styl">My groups</legend>
+                            <div class="space">
+                            </div>
+
+                            <% @groups.each do |group| %>
+                            <div>
+                            <a href=""><%=group.group_name%></a>
+                            <button>add</button>
+                            <button>delete</button>
+                            </div>
+                            <%end%>
+                        </fieldset>
+                        
+
+                    </div>
+                    <div class="inner-div">
+                        <fieldset class="inner-div">
+                            <legend class="legend-styl">Group name</legend>
+                            <div class="space">
+                            </div>
+                                <p>Your Friend Name</p>
+                                <input type="text" placeholder="Search.." class="search-group2">
+                                <button name="add-group" class="search-group3">add</button>
+                                <div class="space">
+                                    </div>
+
+                                <div>
+                                <%= form_with scope: :group, url: groups_path, local: true do |form| %>
+                                    <a href=""><%=@ww%></a>
+                                    <%end%>
+                                </div>
+
+                        </fieldset>
+                    </div>
+                </div>
+</html>

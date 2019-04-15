@@ -1,5 +1,7 @@
 Rails.application.routes.draw do
   get '/' ,to: 'home#index'
+  #get '/groups' ,to: 'groups#index'
+  resources :groups
 
  # devise_for :users
 #devise_for :users, controllers: { omniauth_callbacks: 'users/omniauth_callbacks' }
