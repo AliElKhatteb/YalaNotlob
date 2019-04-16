@@ -3,12 +3,13 @@ class User < ApplicationRecord
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
-
   has_many :groups , dependent: :destroy
   has_many :friends ,  dependent: :destroy
   has_many :orders  ,  dependent: :destroy
   has_one_attached :avatar
 
+  has_many :friendships
+  has_many :friends, :through => :friendship
 
 devise :omniauthable,:omniauth_providers => [:google_oauth2, :facebook, :twitter, :linkedin]
 
