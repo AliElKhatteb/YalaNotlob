@@ -4,11 +4,8 @@ git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 ruby '2.6.0'
 gem 'devise'
 # sudo yum install ImageMagick LibMagickcore-dev LibMagickwand-dev
-<<<<<<< HEAD
 #gem 'rmagick', '~>2.13.2'
-=======
 # gem 'rmagick', '~>2.13.2'
->>>>>>> a42a3bfce0d1232e682204f8b08bf864cb854d2d
 
 gem 'devise-bootstrap-views', '~> 1.0'
 gem 'omniauth-facebook'

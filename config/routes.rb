@@ -1,7 +1,12 @@
 Rails.application.routes.draw do
   get '/' ,to: 'home#index'
   #get '/groups' ,to: 'groups#index'
-  resources :groups
+  #resources :groups
+  resources :groups do
+    
+    resources :groups_members
+    
+  end
 #   get 'friends', to: 'friends#friendhome'
 #   post 'friends', to: 'friends#adduser'
 #   delete '/friends/:id', to: 'friends#destroy', as:"delete_user"
