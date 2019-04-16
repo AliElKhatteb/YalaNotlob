@@ -23,6 +23,7 @@ class OrdersController < ApplicationController
           else
             render 'new'
           end
+         
     end 
     def index
         puts "viiiiiiiiewwwww"

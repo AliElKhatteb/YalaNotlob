@@ -19,7 +19,12 @@ class ItemsController < ApplicationController
            else
             #it give err of not saved weher items in views be empty
         render 'index'
-
+        @user_order = UserOrder.new
+        @user_order.user= current_user
+        @user_order.order= params[:order_id]
+        @user_order.save
+        puts @user_order 
+        puts usssser_order
        end
      
 

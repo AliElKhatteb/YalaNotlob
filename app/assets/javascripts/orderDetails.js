@@ -35,3 +35,30 @@ function increaseAmount() {
      
     })
   }
+  function myFunction() {
+    var x = document.getElementById("myDIV");
+    if (x.style.display === "block") {
+      x.style.display = "none";
+    } else {myFunctionbtn
+      x.style.display = "block";
+    }
+  }
+
+
+  function myFunctionbtn() {
+    var x = document.getElementById("mydiv");
+    if (x.style.display === "block") {
+      x.style.display = "none";
+    } else {
+      x.style.display = "block";
+    }
+  }
+
+  function neww() {
+    var y = document.getElementById("viewinvited");
+    if (y.style.display === "block") {
+      y.style.display = "none";
+    } else {
+      y.style.display = "block";
+    }
+  }
