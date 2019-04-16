@@ -13,9 +13,10 @@
   <% if user_signed_in? %>
             <div class="topnav">
                     <a class="active" href="/">Home</a>
-                    <a href="/Friends">Friends</a>
+                    <a href="/friends">Friends</a>
                     <a href="/groups">Groups</a>
-                    <a href="/Orders">Orders</a>
+                    <a href="/orders">Orders</a>
+
                  
                    
                 
@@ -23,9 +24,9 @@
                   </div>  
 
                   <div class="bell-div">
-                  <i class="fa fa-bell" style="font-size:24px;color:red"></i>
 
 
+                            <%= link_to "Settings", edit_user_registration_path, class: "dropdown-item" %>
               <%= image_tag user_avatar(current_user, 40), class: "rounded-circle" %>
    <a> <%= link_to('Logout', destroy_user_session_path, method: :delete) %></a>
            

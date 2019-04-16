@@ -4,8 +4,7 @@ git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 ruby '2.6.0'
 gem 'devise'
 # sudo yum install ImageMagick LibMagickcore-dev LibMagickwand-dev
-#gem 'rmagick', '~>2.13.2'
-# gem 'rmagick', '~>2.13.2'
+gem 'rmagick', '~>2.13.2'
 
 gem 'devise-bootstrap-views', '~> 1.0'
 gem 'omniauth-facebook'
@@ -34,7 +33,7 @@ gem 'turbolinks', '~> 5'
 # Build JSON APIs with ease. Read more: https://github.com/rails/jbuilder
 gem 'jbuilder', '~> 2.5'
 # Use Redis adapter to run Action Cable in production
-# gem 'redis', '~> 4.0'
+gem 'redis', '~> 4.0'
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
 

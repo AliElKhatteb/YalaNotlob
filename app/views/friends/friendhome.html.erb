@@ -16,8 +16,8 @@
 <table border="0">
   <tr>
   <% @friends.each do |s| %>
-    <td><%= @user.find(s.friend_id).name %></td>
-    <td><%= link_to "unfriend",delete_user_url(s.friend_id), method:"delete" %></td>
+    <td><%= @user.find(s.friend_id).name %>
+    <%= link_to "unfriend",delete_user_url(s.friend_id), method:"delete" %></td>
    
   <% end %>
 
