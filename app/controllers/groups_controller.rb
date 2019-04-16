@@ -5,6 +5,7 @@ class GroupsController < ApplicationController
     
     @groups = Group.where(user_id: current_user.id)
     @group_name = "group_name"
+    
 
     # @groupsMembers = GroupsMember.where(group_id: 15)
     # @ww=@groupsMembers[0].group.group_name
@@ -28,7 +29,21 @@ class GroupsController < ApplicationController
 
      @groupsMembers = GroupsMember.where(group_id: params[:id])
      @group_name = @clickedGroup.group_name
-     puts @groupsMembers[0]
+     group_member_names = []
+     for groupMember in @groupsMembers do 
+      group_member_name = User.find(groupMember.user_id)
+      @group_member_names = group_member_names.push(group_member_name)
+      
+      
+     end
+
+     for group_member_name in @group_member_names do 
+     puts group_member_name.name
+      puts "shhhhhhhow"
+     end
+
+    #  @group_member_names = User.where(id)
+     puts @groupsMembers[0].id
      puts "shhhhhhhow"
      render "index"
 

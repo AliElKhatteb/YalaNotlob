@@ -40,6 +40,14 @@ ActiveRecord::Schema.define(version: 2019_04_15_171854) do
     t.datetime "updated_at", null: false
   end
 
+  create_table "friends", force: :cascade do |t|
+    t.string "friend_email"
+    t.integer "user_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["user_id"], name: "index_friends_on_user_id"
+  end
+
   create_table "groups", force: :cascade do |t|
     t.string "group_name"
     t.integer "user_id"

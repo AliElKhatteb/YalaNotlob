@@ -49,14 +49,21 @@
                             <div class="space">
                             </div>
                             
-                                <input type="text" placeholder="Search.." class="search-group2">
+                                <input type="text" placeholder="add members.." class="search-group2">
                                 <button name="add-group" class="search-group3">add</button>
                                 <div class="space">
                                     </div>
 
                                 <div>
                                 <%= form_with scope: :group, url: groups_path, local: true do |form| %>
-                                    <a href=""><%=@ww%></a>
+                                    <%if(!@group_member_names)%>
+                                    <a href="">no members</a>
+                                    <%else %>
+                                    <% @group_member_names.each do |group_member_name| %>
+                                        
+                                    <a href=""><%=group_member_name.name%></a></br>
+                                    <%end%>
+                                    <%end%>
                                     <%end%>
                                 </div>
 
