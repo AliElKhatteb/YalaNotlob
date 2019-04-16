@@ -52,7 +52,9 @@ ActiveRecord::Schema.define(version: 2019_04_16_153038) do
     t.integer "group_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "user_id"
     t.index ["group_id"], name: "index_groups_members_on_group_id"
+    t.index ["user_id"], name: "index_groups_members_on_user_id"
   end
 
   create_table "items", force: :cascade do |t|
@@ -66,6 +68,16 @@ ActiveRecord::Schema.define(version: 2019_04_16_153038) do
     t.datetime "updated_at", null: false
     t.index ["order_id"], name: "index_items_on_order_id"
     t.index ["user_id"], name: "index_items_on_user_id"
+  end
+
+  create_table "notifications", force: :cascade do |t|
+    t.string "from"
+    t.string "to"
+    t.string "type"
+    t.integer "order_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["order_id"], name: "index_notifications_on_order_id"
   end
 
   create_table "order_users", force: :cascade do |t|

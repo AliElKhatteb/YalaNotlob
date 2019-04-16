@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+
+<html>
+
+<body> 
+                <div class="body-div">
+                        <div class="space">
+                            </div>
+                    <h1>Groups</h1>
+                    <div class="search-group">
+                    <%= form_with scope: :group, url: groups_path, local: true do |form| %>
+
+                        <%= form.label :group_name %><br>
+                        <input type="text" name="group_name">    
+                        
+                        <%= form.submit %>
+<% end %>
+    
+                    </div>
+                                    </div>    
+                
+                <div class="container-div"> 
+                    <div class="inner-div">
+                        <fieldset class="inner-div">
+                            <legend class="legend-styl">My groups</legend>
+                            <div class="space">
+                            </div>
+
+                            <% @groups.each do |group| %>
+                            <div>
+                            <a href="" class="gname"><%=group.group_name%></a>
+                            <%= link_to "add" , group_path(group.id)%>
+                            <button class="addbutton" >add</button>
+                            <button>delete</button>
+                            </div>
+                            <%end%>
+                        </fieldset>
+                        
+
+                    </div>
+                    <div class="inner-div">
+                        <fieldset class="inner-div">
+            
+        
+            <legend><%= @group_name %></legend>
+          
+
+                            
+                            <div class="space">
+                            </div>
+                            
+                                <input type="text" placeholder="add members.." class="search-group2">
+                                <button name="add-group" class="search-group3">add</button>
+                                <div class="space">
+                                    </div>
+
+                                <div>
+                                <%= form_with scope: :group, url: groups_path, local: true do |form| %>
+                                    <%if(!@group_member_names)%>
+                                    <a href="">no members</a>
+                                    <%else %>
+                                    <% @group_member_names.each do |group_member_name| %>
+                                        
+                                    <a href=""><%=group_member_name.name%></a></br>
+                                    <%end%>
+                                    <%end%>
+                                    <%end%>
+                                </div>
+
+                        </fieldset>
+                    </div>
+                </div>
+</body>
+                <script>
+                function addbutton(groupname,i)
+                {
+
+                    document.getElementById('groupname').textContent=groupname
+                }
+                arrbtn = document.getElementsByClassName('addbutton')
+                for (let i = 0; i < arrbtn.length; i++) {
+                    arrbtn[i].addEventListener("click", function () {
+                       gname= document.getElementsByClassName('gname')[i].textContent
+                        addbutton(gname, i);
+                    }, false);
+}
+
+                </script>
+</html>

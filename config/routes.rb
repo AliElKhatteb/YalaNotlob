@@ -1,5 +1,12 @@
 Rails.application.routes.draw do
-  post 'orderarrusers', to: 'orders#viewaddedusers', as:"order_addeduser"
+  get '/' ,to: 'home#index'
+  #get '/groups' ,to: 'groups#index'
+  #resources :groups
+  resources :groups do
+    
+    resources :groups_members
+    
+  end
 #   get 'friends', to: 'friends#friendhome'
 #   post 'friends', to: 'friends#adduser'
 #   delete '/friends/:id', to: 'friends#destroy', as:"delete_user"
@@ -24,8 +31,9 @@ resources :orders do
   
   
   # order_addfriend_url
- # devise_for :users
-#devise_for :users, controllers: { omniauth_callbacks: 'users/omniauth_callbacks' }
+
+  get 'event', to: 'events#index'
+  mount ActionCable.server => '/cable'
  devise_for :users, :controllers => { :omniauth_callbacks => "users/omniauth_callbacks" }
 
 
@@ -33,5 +41,8 @@ resources :orders do
 #  delete 'sign_out', :to => 'devise/sessions#destroy', :as => :destroy_user_session
 #end
     # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
+
+
+
 end
 

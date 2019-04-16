@@ -188,6 +188,7 @@ GEM
     rb-fsevent (0.10.3)
     rb-inotify (0.10.0)
       ffi (~> 1.0)
+    redis (4.0.3)
     regexp_parser (1.4.0)
     responders (2.4.1)
       actionpack (>= 4.2.0, < 6.0)
@@ -265,6 +266,7 @@ DEPENDENCIES
   omniauth-twitter
   puma (~> 3.11)
   rails (~> 5.2.3)
+  redis (~> 4.0)
   sass-rails (~> 5.0)
   selenium-webdriver
   spring
