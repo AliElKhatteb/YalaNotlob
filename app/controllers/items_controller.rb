@@ -1,8 +1,16 @@
 class ItemsController < ApplicationController
     def index
+        #check if user not invited in this order don't show him this page
+       
         @items = Item.where(order_id: params[:order_id])
         #note::check if select return null  render the page with empty array
         #catch error of null
+        @joined = Item.where(order_id: params[:order_id]).group(:user_id)
+        @nuJoined= @joined.length
+        # this is to be acessed in html =>  joined[i].user.email
+        @invited = OrderUser.where(order_id: params[:order_id])
+        @nuInvited=@invited.length
+    
     end
     def create
         @item = Item.new
