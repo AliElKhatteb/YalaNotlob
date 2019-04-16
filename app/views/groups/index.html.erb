@@ -28,8 +28,9 @@
 
                             <% @groups.each do |group| %>
                             <div>
-                            <a href=""><%=group.group_name%></a>
-                            <button>add</button>
+                            <a href="" class="gname"><%=group.group_name%></a>
+                            <%= link_to "add" , group_path(group.id)%>
+                            <button class="addbutton" >add</button>
                             <button>delete</button>
                             </div>
                             <%end%>
@@ -39,22 +40,50 @@
                     </div>
                     <div class="inner-div">
                         <fieldset class="inner-div">
-                            <legend class="legend-styl">Group name</legend>
+            
+        
+            <legend><%= @group_name %></legend>
+          
+
+                            
                             <div class="space">
                             </div>
-                                <p>Your Friend Name</p>
-                                <input type="text" placeholder="Search.." class="search-group2">
+                            
+                                <input type="text" placeholder="add members.." class="search-group2">
                                 <button name="add-group" class="search-group3">add</button>
                                 <div class="space">
                                     </div>
 
                                 <div>
                                 <%= form_with scope: :group, url: groups_path, local: true do |form| %>
-                                    <a href=""><%=@ww%></a>
+                                    <%if(!@group_member_names)%>
+                                    <a href="">no members</a>
+                                    <%else %>
+                                    <% @group_member_names.each do |group_member_name| %>
+                                        
+                                    <a href=""><%=group_member_name.name%></a></br>
+                                    <%end%>
+                                    <%end%>
                                     <%end%>
                                 </div>
 
                         </fieldset>
                     </div>
                 </div>
+</body>
+                <script>
+                function addbutton(groupname,i)
+                {
+
+                    document.getElementById('groupname').textContent=groupname
+                }
+                arrbtn = document.getElementsByClassName('addbutton')
+                for (let i = 0; i < arrbtn.length; i++) {
+                    arrbtn[i].addEventListener("click", function () {
+                       gname= document.getElementsByClassName('gname')[i].textContent
+                        addbutton(gname, i);
+                    }, false);
+}
+
+                </script>
 </html>
