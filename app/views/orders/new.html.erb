@@ -74,10 +74,23 @@ crossorigin="anonymous"></script>
 function frirnds()
 { 
 	var arr=[]
+	var  prsesnt;
 	var parent = document.getElementById('invited')
 	console.log(parent)
 	friend=document.getElementsByName("friends")[0].value
+  for i in arr 
+	{
+		if( i == friend)
+			prsesnt= true;
+			break;
+		else
+			prsesnt=false;
+		
 
+	}
+	if (prsesnt==false)
+		{
+					
   var div = document.createElement("div");
 
   var para = document.createElement("p");
@@ -87,6 +100,14 @@ function frirnds()
   para.appendChild(node);
   div.appendChild(para);
   parent.appendChild(div)
+  arr.push(friend)
+
+		}
+		console.log(arr)
+		return arr;
+
+
+
 
 	
 

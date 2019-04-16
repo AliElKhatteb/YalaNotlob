@@ -33,9 +33,9 @@ ActiveRecord::Schema.define(version: 2019_04_16_153038) do
     t.index ["key"], name: "index_active_storage_blobs_on_key", unique: true
   end
 
-  create_table "friendships", force: :cascade do |t|
+  create_table "events", force: :cascade do |t|
     t.integer "user_id"
-    t.integer "friend_id"
+    t.string "message"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -46,6 +46,13 @@ ActiveRecord::Schema.define(version: 2019_04_16_153038) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["user_id"], name: "index_friends_on_user_id"
+  end
+
+  create_table "friendships", force: :cascade do |t|
+    t.integer "user_id"
+    t.integer "friend_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "groups", force: :cascade do |t|

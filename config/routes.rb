@@ -28,7 +28,7 @@ resources :orders do
     resources :order_users
     
   end
-  
+  resources :friends
   
   # order_addfriend_url
 
