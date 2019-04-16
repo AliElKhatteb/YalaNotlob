@@ -1,6 +1,8 @@
 <!Doctype html>
 <html>
-   <head>
+	 <head>
+	 <script src="https://code.jquery.com/jquery-3.1.1.js" integrity="sha256-16cdPddA6VdVInumRGo6IbivbERE8p7CQR3HzTBuELA="
+crossorigin="anonymous"></script>
 		 <link rel="stylesheet" href="addorder.css">
 		 <link rel="stylesheet" href="friends_activity.css">
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
@@ -24,28 +26,78 @@
 			<label for="fname">From</label>
 			<input type="text" id="fname" name="rest_name" placeholder="Your name..">
 
-			<label for="lname">Friends</label>
-			<input type="text" id="lname" name="friends" placeholder="Your last name..">
-            
-            <label for="lname">Groups</label>
-            <input type="text" id="lname" name="groups" placeholder="Your last name..">
+		
+						<label for="lname">Friends</label>
 
+     <select required name="friends" onclick="frirnds()">
+         <option value="" disabled selected>Select Friend...
+						<% for friend in @friends %>
+						<option><%= friend.friend.name %></option>
+						<% end %> 
+
+						</select>
+						<select name="groups" onclick="groups()" >
+						<% for group in @groups %>
+						<option><%= group.group_name %></option>
+						<% end %> 
+
+						</select>
 			<input type="file" name="pic" accept="image/*">
 
 			<input type="submit" value="Submit">
+		
+	
+						<% end %>
+				
+						
 
-            <% end %>
-	 </div> 
+						</div> 
 	 
 
 	 <!--the field set-->
 	 <form class="fs">
 		<fieldset>
 		 <legend>Friends invited:</legend>
-		 Friend Name: <input type="text"><br>
+		 Friend Name: 
+		 <div id="invited">
+		
+		
+			
+
+		 </div><br>
 	   <button class="btn danger">Remove</button>
 		</fieldset>
 	 </form>
 
-   </body>
+	 </body>
+	 <script>
+function frirnds()
+{ 
+	var arr=[]
+	var parent = document.getElementById('invited')
+	console.log(parent)
+	friend=document.getElementsByName("friends")[0].value
+
+  var div = document.createElement("div");
+
+  var para = document.createElement("p");
+
+  var node = document.createTextNode(friend);
+
+  para.appendChild(node);
+  div.appendChild(para);
+  parent.appendChild(div)
+
+	
+
+}
+function groups()
+{
+	group=document.getElementsByName("groups")[0].value
+
+
+}
+	
+	
+	 </script>
 </html>

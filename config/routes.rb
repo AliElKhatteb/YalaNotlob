@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  post 'orderarrusers', to: 'orders#viewaddedusers', as:"order_addeduser"
 #   get 'friends', to: 'friends#friendhome'
 #   post 'friends', to: 'friends#adduser'
 #   delete '/friends/:id', to: 'friends#destroy', as:"delete_user"

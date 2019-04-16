@@ -1,6 +1,14 @@
 class OrdersController < ApplicationController
     def new
-        @order=Order.new
+         @users=["sss","sss","sddd"]
+        @friends =Friendship.where(user_id:current_user.id)
+       @groups = Group.where(user:current_user)
+       
+       @order=Order.new
+    end
+    def viewaddedusers
+        @users=["nada","yasmin","arwa"]
+        redirect_to 
     end
     # def show
     #     # @orders = Order.where(:user => current_user)
