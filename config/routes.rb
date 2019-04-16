@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  get 'events/index'
   get '/' ,to: 'home#index'
   #get '/groups' ,to: 'groups#index'
   resources :groups
@@ -24,11 +25,15 @@ resources :orders do
     
   end
   
+
+
+  # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
+  # Serve websocket cable requests in-process
+  get 'events/index'
+  mount ActionCable.server => '/cable'
   
   # order_addfriend_url
 
-  get 'event', to: 'events#index'
-  mount ActionCable.server => '/cable'
  devise_for :users, :controllers => { :omniauth_callbacks => "users/omniauth_callbacks" }
 
 

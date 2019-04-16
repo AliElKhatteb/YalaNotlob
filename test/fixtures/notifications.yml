@@ -1,13 +1,17 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
 one:
-  from: MyString
-  to: MyString
+  recieverid: 1
+  senderid: 1
+  readat: 2019-04-16 17:48:19
+  action: MyString
+  notifyid: 1
   type: 
-  order: one
 
 two:
-  from: MyString
-  to: MyString
+  recieverid: 1
+  senderid: 1
+  readat: 2019-04-16 17:48:19
+  action: MyString
+  notifyid: 1
   type: 
-  order: two

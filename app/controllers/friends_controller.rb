@@ -10,7 +10,6 @@ class FriendsController < ApplicationController
     def adduser
         puts "here"
         puts params[:adduser]
-<<<<<<< HEAD
         begin 
             @u=User.find_by(email:params[:adduser]).id
         rescue
@@ -22,16 +21,6 @@ class FriendsController < ApplicationController
 
 
 
-=======
-        
-        begin  # "try" block
-            @u=User.find_by(email:params[:adduser]).id 
-        rescue # optionally: `rescue Exception => ex`
-            redirect_to('/friends')
-        ensure # will always get executed
-            @doesntexsist="user doesnt exsist"
-        end 
->>>>>>> fb72a94d9f6a9e297665a19185e5e4884c5a2481
         @addfrienduser=UserFriend.new
         searchid=UserFriend.all
         friend_ids = []
