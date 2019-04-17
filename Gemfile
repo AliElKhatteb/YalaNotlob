@@ -7,6 +7,8 @@ gem 'devise'
 #gem 'rmagick', '~>2.13.2'
 # gem 'rmagick', '~>2.13.2'
 
+gem 'activity_notification'
+
 gem 'jquery-rails'
 gem 'devise-bootstrap-views', '~> 1.0'
 gem 'omniauth-facebook'
