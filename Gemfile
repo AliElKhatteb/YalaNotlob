@@ -4,6 +4,7 @@ git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 ruby '2.6.0'
 gem 'devise'
 # sudo yum install ImageMagick LibMagickcore-dev LibMagickwand-dev
+#gem 'rmagick', '~>2.13.2'
 # gem 'rmagick', '~>2.13.2'
 
 gem 'jquery-rails'

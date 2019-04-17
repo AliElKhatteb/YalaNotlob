@@ -78,3 +78,86 @@ table, th, td {
       margin: 0;
   }
 
+  .popup{
+    width: 800px;
+    height: 600px;
+    margin-top: 550px;
+    position: relative;
+    left: -950px;
+  }
+
+
+  .viewinvited{
+    position: relative;
+    left: -1200px;
+    width: 600px;
+    height: 600px;
+    background-color: antiquewhite;
+  }
+  #myDIV {
+    width: 100%;
+    padding: 50px 0;
+    text-align: center;
+    background-color: lightblue;
+    margin-top: 100px;
+    display: none;
+    height: 500px;
+  }
+
+
+  .blue{
+    background-color: #4CAF50; /* Green */
+    border: none;
+    color: white;
+    padding: 15px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin: 4px 2px;
+    cursor: pointer;
+    background-color: #008CBA;
+    width: 150px;
+    border-radius: 15px;
+    margin-left: -500px;
+  }
+
+ .blue{
+   margin-left: 20px;
+   
+ }
+
+ .blue_btn{
+   margin-left: 700px;
+   width: 200px;
+   height: 200px;
+   position: relative;
+   top: -1100px;
+   left: 200px;
+ }
+ 
+  .small_div{
+    width: 260px;
+    height: 100px;
+    background-color:wheat;
+    margin-left: 20px;
+  }
+
+ 
+
+  .popup{
+    width: 800px;
+    height: 600px;
+    margin-left: 1000px;
+    position: relative;
+    top: -500px;
+    float: left;
+  }
+
+ 
+  #viewinvited{
+    width:800px;
+    height: 800px;
+    background-color: bisque;
+    
+  }

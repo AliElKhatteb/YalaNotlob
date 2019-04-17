@@ -1,6 +1,14 @@
 class OrdersController < ApplicationController
     def new
-        @order=Order.new
+         @users=["sss","sss","sddd"]
+        @friends =Friendship.where(user_id:current_user.id)
+       @groups = Group.where(user:current_user)
+       
+       @order=Order.new
+    end
+    def viewaddedusers
+        @users=["nada","yasmin","arwa"]
+        redirect_to 
     end
     # def show
     #     # @orders = Order.where(:user => current_user)
@@ -12,6 +20,7 @@ class OrdersController < ApplicationController
     # end
 
     def create
+        #add the fiends or groups to table order_user
         @order = Order.new
         @order.rest_name = params[:rest_name]
         @order.order_for = params[:order_for]
@@ -23,6 +32,7 @@ class OrdersController < ApplicationController
           else
             render 'new'
           end
+         
     end 
     def index
         puts "viiiiiiiiewwwww"

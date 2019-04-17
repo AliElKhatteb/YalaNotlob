@@ -1,5 +1,5 @@
 class FriendsController < ApplicationController
-    def friendhome
+    def index
         @user=User.all
         @friends=UserFriend.where(user_id:current_user.id)
         
@@ -7,20 +7,18 @@ class FriendsController < ApplicationController
         
     end
     @doesntexsist="ali"
-    def adduser
+    def create
         puts "here"
         puts params[:adduser]
-        begin 
-            @u=User.find_by(email:params[:adduser]).id
-        rescue
-            redirect_to('/friends')
-        ensure
-           @doesntexsist="user not found"
-        end
+        
+        begin  # "try" block
+            @u=User.find_by(email:params[:adduser]).id 
+        rescue # optionally: `rescue Exception => ex`
+            redirect_to friends_path
 
-
-
-
+        ensure # will always get executed
+            @doesntexsist="user doesnt exsist"
+        end 
         @addfrienduser=UserFriend.new
         searchid=UserFriend.all
         friend_ids = []
@@ -36,7 +34,7 @@ class FriendsController < ApplicationController
               if @u!=current_user.id
                    @addfrienduser.friend_id=@u
                    @addfrienduser.save
-                   redirect_to('/friends')
+                   redirect_to friends_path
                 
               end
             end  
@@ -53,7 +51,7 @@ class FriendsController < ApplicationController
         puts @user.id
         puts 
         @user.destroy
-        redirect_to('/friends')
+        redirect_to friends_path
     
         
     end    
