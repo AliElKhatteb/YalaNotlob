@@ -34,8 +34,6 @@ resources :orders do
 
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
   # Serve websocket cable requests in-process
-  get 'events/index'
-  mount ActionCable.server => '/cable'
   
   # order_addfriend_url
 
