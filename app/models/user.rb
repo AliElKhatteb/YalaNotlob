@@ -13,6 +13,7 @@ class User < ApplicationRecord
 
 devise :omniauthable,:omniauth_providers => [:google_oauth2, :facebook, :twitter, :linkedin]
 
+acts_as_target email: :email, email_allowed: :confirmed_at
 
    def self.new_with_session(params, session)
       super.tap do |user|
