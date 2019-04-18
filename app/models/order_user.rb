@@ -4,14 +4,7 @@ class OrderUser < ApplicationRecord
   has_many :orders, :dependent => :delete_all
   has_many :users, :dependent => :delete_all
 
-  acts_as_notifiable :users,
-  targets: ->(order, key) {
-    ([order.user] + order.user.commented_users.to_a - [order.user]).uniq
-  },
-  notifiable_path: :_notifiable_path
-   def order_notifiable_path
-    order_path(order)
-  end
+
 
   # after_create_commit { create_event }
   # def create_event()
@@ -21,7 +14,20 @@ class OrderUser < ApplicationRecord
   #   	@event = Event.create message: "A new order has been created", user_id: user.id
 	# end
   #end
+  acts_as_notifiable :users,
+    # Notification targets as :targets is a necessary option
+    # Set to notify to author and users commented to the article, except comment owner self
+    targets: ->(order, key) {
+      ([order.user] + order.OrderUser.users - [order.user]).uniq
+    },
+    # Path to move when the notification is opened by the target user
+    # This is an optional configuration since activity_notification uses polymorphic_path as default
+    notifiable_path: :article_notifiable_path
 
+  def article_notifiable_path
+    article_path(article)
+  end
+end
 
 
 end
