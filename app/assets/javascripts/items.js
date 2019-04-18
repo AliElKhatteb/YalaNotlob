@@ -35,30 +35,19 @@ function increaseAmount() {
      
     })
   }
-  function myFunction() {
+ 
+
+
+  function view_div() {
     var x = document.getElementById("myDIV");
-    if (x.style.display === "block") {
-      x.style.display = "none";
-    } else {myFunctionbtn
-      x.style.display = "block";
-    }
+  if (x.style.display === "none") {
+    x.style.display = "block";
+  } else {
+    x.style.display = "none";
   }
+  } 
 
 
-  function myFunctionbtn() {
-    var x = document.getElementById("mydiv");
-    if (x.style.display === "block") {
-      x.style.display = "none";
-    } else {
-      x.style.display = "block";
-    }
-  }
 
-  function neww() {
-    var y = document.getElementById("viewinvited");
-    if (y.style.display === "block") {
-      y.style.display = "none";
-    } else {
-      y.style.display = "block";
-    }
-  }
+
+ 
