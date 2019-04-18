@@ -11,36 +11,42 @@
 	   
 	<!--the form-->
 	 <div class="container">
-     <%= form_with model:  @order do |form| %>
-			  
+	      <%= form_with model:  @order do |form| %>
+			<input type="hidden" id="all" name="all" value="3487"> 
+
             <label for="country">Order for</label>
 			<select id="country" name="order_for">
 			  <option value="lnuch">Lunch</option>
 			  <option value="breakfast">Breakfast</option>
-			</select>
+			</select> <br>
 			  
 			<label for="fname">From</label>
-			<input type="text" id="fname" name="rest_name" placeholder="Your name..">
+			<input type="text" id="fname" name="rest_name" placeholder="restraunt name..">
 
 		
 						<label for="lname">Friends</label>
 
-     <select required name="friends" onclick="frirnds()">
-         <option value="" disabled selected>Select Friend...
-						<% for friend in @friends %>
-						<option><%= friend.friend.name %></option>
-						<% end %> 
+						<select name="friends" id="selectbox" onchange="frindsFunc()">
+						<option >Select Friend ...
+									   <% for friend in @friends %>
+									   <option><%= friend.friend.name %></option>
+									   <% end %> 
+									   </select>
+									   <br>
+									   <label for="lname">Groups</label>
 
-						</select>
-						<select name="groups" onclick="groups()" >
-						<% for group in @groups %>
-						<option><%= group.group_name %></option>
-						<% end %> 
+									   <select name="groups" onclick="groups()" >
+									   <option value="" disabled selected>Select Group...
+									   <% for group in @groups %>
+									   <option><%= group.group_name %></option>
+									   <% end %> 
+									   </select>
+									   <br>
+									   <label for="lname">Menu image</label>
 
-						</select>
-			<input type="file" name="pic" accept="image/*">
+										<input type="file" name="pic" accept="image/*">
 
-			<input type="submit" value="Submit">
+										<input type="submit" value="Submit">
 		
 	
 						<% end %>
@@ -66,48 +72,57 @@
 	 </form>
 
 	 </body>
-	 <script>
-function frirnds()
-{ 
-	var arr=[]
-	var  prsesnt;
-	var parent = document.getElementById('invited')
-	console.log(parent)
-	friend=document.getElementsByName("friends")[0].value
-  for i in arr 
-	{
-		if( i == friend)
-			prsesnt= true;
-			break;
-		else
-			prsesnt=false;
-		
+	 <script >
 
-	}
-	if (prsesnt==false)
-		{
-					
-  var div = document.createElement("div");
-
-  var para = document.createElement("p");
-
-  var node = document.createTextNode(friend);
-
-  para.appendChild(node);
-  div.appendChild(para);
-  parent.appendChild(div)
-  arr.push(friend)
-
-		}
-		console.log(arr)
-		return arr;
-
-
-
+	 let frindsSent;
+   
+	 function frindsFunc()
+	 {
+		 
+		  
+	
+		var  prsesnt;
+		var parent = document.getElementById('invited')
+		console.log(parent)
+	   var friend=document.getElementsByName("friends")[0].value
+	  var div = document.createElement("div");
+	
+	  var para = document.createElement("p");
+	  para.className="frindsSent"
 
 	
+	  var node = document.createTextNode(friend);
+	 var selectbox = document.getElementById('selectbox')
 
-}
+
+	  para.appendChild(node);
+	  div.appendChild(para);
+	  parent.appendChild(div)
+	  var selectbox =document.getElementById('selectbox')
+	  value = selectbox.selectedIndex
+	  selectbox.removeChild(selectbox[value])
+	
+	
+	 
+	 
+			 frindsSent= document.getElementsByClassName('frindsSent')[0].textContent
+			 console.log(frindsSent)
+			 let all =document.getElementById('all').value
+			 if ( all == "3487")
+				{
+				
+					document.getElementById('all').value= frindsSent
+				}
+			else 
+				{
+					
+					document.getElementById('all').value = all+","+frindsSent
+				}
+				console.log("vaueof input after set"+document.getElementById('all').value)
+	 
+	 }
+
+
 function groups()
 {
 	group=document.getElementsByName("groups")[0].value
