@@ -15,9 +15,11 @@ class FriendsController < ApplicationController
             @u=User.find_by(email:params[:adduser]).id 
         rescue # optionally: `rescue Exception => ex`
             redirect_to friends_path
+            flash[:notice] = "sorry...user not found"
 
         ensure # will always get executed
             @doesntexsist="user doesnt exsist"
+
         end 
         @addfrienduser=UserFriend.new
         searchid=UserFriend.all
@@ -51,6 +53,7 @@ class FriendsController < ApplicationController
         puts @user.id
         puts 
         @user.destroy
+        flash[:notice] = "removed friend successfully"
         redirect_to friends_path
     
         

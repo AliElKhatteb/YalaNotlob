@@ -8,9 +8,14 @@
 <%= form_with scope: :friends, local: true do |form| %>
     
     <input type="text" name="adduser" >
+<% if flash[:notice] %>
+    <div class="notice"><%= flash[:notice] %></div>
+  <% end %>
     <input type="submit" value="add">
     
   <% end %>
+
+
 <fieldset style="width:700px;height:300px;margin-left:30px;">
 <legend>Friend List</legend>
 <table border="0">
