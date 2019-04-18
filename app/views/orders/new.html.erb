@@ -78,13 +78,8 @@
    
 	 function frindsFunc()
 	 {
-		 
-		  
-	
-		var  prsesnt;
-		var parent = document.getElementById('invited')
-		console.log(parent)
-	   var friend=document.getElementsByName("friends")[0].value
+	var parent = document.getElementById('invited')
+	 var friend=document.getElementsByName("friends")[0].value
 	  var div = document.createElement("div");
 	
 	  var para = document.createElement("p");
@@ -103,20 +98,19 @@
 	  selectbox.removeChild(selectbox[value])
 	
 	
-	 
-	 
-			 frindsSent= document.getElementsByClassName('frindsSent')[0].textContent
-			 console.log(frindsSent)
+	  frindsSent= document.getElementsByClassName('frindsSent')
+	   var lastFriend=frindsSent[frindsSent.length-1].textContent
+	   console.log(lastFriend)
 			 let all =document.getElementById('all').value
 			 if ( all == "3487")
 				{
 				
-					document.getElementById('all').value= frindsSent
+					document.getElementById('all').value= lastFriend
 				}
 			else 
 				{
 					
-					document.getElementById('all').value = all+","+frindsSent
+					document.getElementById('all').value = all+","+lastFriend
 				}
 				console.log("vaueof input after set"+document.getElementById('all').value)
 	 
