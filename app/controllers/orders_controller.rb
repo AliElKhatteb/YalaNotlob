@@ -20,6 +20,8 @@ class OrdersController < ApplicationController
     # end
 
     def create
+        puts "cccreaaate"
+        puts params[:all]
         #add the fiends or groups to table order_user
         @order = Order.new
         @order.rest_name = params[:rest_name]
