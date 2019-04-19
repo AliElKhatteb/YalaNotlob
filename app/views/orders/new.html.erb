@@ -29,7 +29,7 @@
 						<select name="friends" id="selectbox" onchange="frindsFunc()">
 						<option >Select Friend ...
 									   <% for friend in @friends %>
-									   <option><%= friend.friend.name %></option>
+									   <option><%= friend.friend.email %></option>
 									   <% end %> 
 									   </select>
 									   <br>
@@ -112,11 +112,21 @@
 	  selectbox.removeChild(selectbox[value])
 	
 	
-	 var frindsSent= document.getElementById('invited').children[0].textContent;
-	console.log(frindsSent)
-	  console.log("vaueof input after set"+document.getElementById('all').value)
+	var frindsSent= document.getElementById('invited').children;
+var listArray=[];
+for (var i=0;i<frindsSent.length;i++){
+listArray.push(frindsSent[i].textContent);
+}
 
-	  console.log(frindsSent) 
+document.getElementById('all').value=listArray
+
+
+
+
+	//console.log(frindsSent)
+	  //console.log("vaueof input after set"+document.getElementById('all').value)
+
+	  //console.log(frindsSent) 
 
 	}
 

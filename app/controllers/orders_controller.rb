@@ -6,10 +6,34 @@ class OrdersController < ApplicationController
        
        @order=Order.new
     end
-    def viewaddedusers
-        @users=["nada","yasmin","arwa"]
-        redirect_to 
+    def saveFriendsGroups(order,friends)
+        puts "inside saving"
+
+        arrFriends=friends.split(',')
+        puts arrFriends 
+ 
+        x = 1
+        arrFriends.each do |friend|
+            @usr = User.where(email:friend)
+            puts @usr[0].id
+            @order_user =OrderUser.new
+            @order_user.order = order
+            @order_user.user = @usr[0]
+            @order_user.state = "invited"
+            @order_user.save
+            x += 1
+        end
+       
+
+        
+
+
+    #  redirect_to  orders_path 
+
+
     end
+
+
     # def show
     #     # @orders = Order.where(:user => current_user)
 
@@ -22,6 +46,10 @@ class OrdersController < ApplicationController
     def create
         puts "cccreaaate"
         puts params[:all]
+        @order_user=OrderUser.new
+        @order_user.user= current_user
+        @order_user.order 
+        
         #add the fiends or groups to table order_user
         @order = Order.new
         @order.rest_name = params[:rest_name]
@@ -30,6 +58,8 @@ class OrdersController < ApplicationController
         @order.user =  current_user 
 
         if @order.save
+            
+            saveFriendsGroups(@order,params[:all])
             redirect_to  orders_path 
           else
             render 'new'
