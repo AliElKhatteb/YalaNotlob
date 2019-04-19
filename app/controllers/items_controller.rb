@@ -5,10 +5,10 @@ class ItemsController < ApplicationController
         @items = Item.where(order_id: params[:order_id])
         #note::check if select return null  render the page with empty array
         #catch error of null
-        @joined = Item.where(order_id: params[:order_id]).group(:user_id)
+        @joined = OrderUser.where(order_id: params[:order_id],state:"joined")
         @nuJoined= @joined.length
-        # this is to be acessed in html =>  joined[i].user.email
-        @invited = OrderUser.where(order_id: params[:order_id])
+        @invited = OrderUser.where(order_id: params[:order_id],state:"invited")
+        
         @nuInvited=@invited.length
     
     end

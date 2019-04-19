@@ -1,8 +1,17 @@
 class GroupsMembersController < ApplicationController
+  def index 
+    @groups = Group.where(user_id: current_user.id)
+    # render :action => 'show', :controller => 'groups'
+   # render :controller => "groups", :action => "show"
+   render :template => "#{Rails.root}/app/controllers/groups/show"  
+  end
     
     def create
-      
-
-        
-      end
+      @groupsMember = GroupsMember.new()
+  @groupsMember.user_id = User.where(name: params[:group_member])
+  @groupsMember.group_id = 16
+  @groupsMember.save
+  @groupsMember.save
+ 
+end
 end
