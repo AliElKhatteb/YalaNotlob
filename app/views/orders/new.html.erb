@@ -57,19 +57,13 @@
 	 
 
 	 <!--the field set-->
-	 <form class="fs">
-		<fieldset>
-		 <legend>Friends invited:</legend>
-		 Friend Name: 
-		 <div id="invited">
+	
+	 <div id="invited" class="fs">
 		
 		
 			
 
-		 </div><br>
-	   <button class="btn danger">Remove</button>
-		</fieldset>
-	 </form>
+	 </div><br>
 
 	 </body>
 	 <script >
@@ -83,7 +77,25 @@
 	  var div = document.createElement("div");
 	
 	  var para = document.createElement("p");
-	  para.className="frindsSent"
+	  var btn = document.createElement("button");
+	  btn.addEventListener("click", function(){
+		  var textOpt= btn.previousSibling.textContent; 
+
+		smalldiv=btn.parentNode
+		smalldiv.parentNode.removeChild(smalldiv)
+		btn.parentNode.parentNode
+		var selectbox =document.getElementById('selectbox')
+
+		var opt = document.createElement('option');
+
+    opt.appendChild( document.createTextNode(textOpt ));
+
+         opt.value = textOpt; 
+
+     selectbox.appendChild(opt); 
+	  }); 
+
+	  //para.className="frindsSent"
 
 	
 	  var node = document.createTextNode(friend);
@@ -92,29 +104,21 @@
 
 	  para.appendChild(node);
 	  div.appendChild(para);
+	  div.appendChild(btn)
+
 	  parent.appendChild(div)
 	  var selectbox =document.getElementById('selectbox')
 	  value = selectbox.selectedIndex
 	  selectbox.removeChild(selectbox[value])
 	
 	
-	  frindsSent= document.getElementsByClassName('frindsSent')
-	   var lastFriend=frindsSent[frindsSent.length-1].textContent
-	   console.log(lastFriend)
-			 let all =document.getElementById('all').value
-			 if ( all == "3487")
-				{
-				
-					document.getElementById('all').value= lastFriend
-				}
-			else 
-				{
-					
-					document.getElementById('all').value = all+","+lastFriend
-				}
-				console.log("vaueof input after set"+document.getElementById('all').value)
-	 
-	 }
+	 var frindsSent= document.getElementById('invited').children[0].textContent;
+	console.log(frindsSent)
+	  console.log("vaueof input after set"+document.getElementById('all').value)
+
+	  console.log(frindsSent) 
+
+	}
 
 
 function groups()
