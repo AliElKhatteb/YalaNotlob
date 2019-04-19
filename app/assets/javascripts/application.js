@@ -14,3 +14,6 @@
 //= require activestorage
 //= require turbolinks
 //= require items
+//= require jquery
+//= require jquery_ujs
+//= require_tree .

@@ -1,16 +1,14 @@
 class OrdersController < ApplicationController
     def new
-         @users=["sss","sss","sddd"]
+        @users=["sss","sss","sddd"]
         @friends =Friendship.where(user_id:current_user.id)
-       @groups = Group.where(user:current_user)
+        @groups = Group.where(user:current_user)
        
        @order=Order.new
     end
     def saveFriendsGroups(order,friends)
-        puts "inside saving"
 
         arrFriends=friends.split(',')
-        puts arrFriends 
  
         x = 1
         arrFriends.each do |friend|
@@ -67,12 +65,10 @@ class OrdersController < ApplicationController
          
     end 
     def index
-        puts "viiiiiiiiewwwww"
 
         @orders = Order.where(:user => current_user)
     end
     def update
-        puts "finnnnnnishhhhhh"
         order=Order.find(params[:id])
         order.update_attribute(:status, "finished")
         redirect_to orders_path
