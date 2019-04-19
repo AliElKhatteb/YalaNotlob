@@ -34,7 +34,7 @@ resources :orders do
   # order_addfriend_url
 
  devise_for :users, :controllers => { :omniauth_callbacks => "users/omniauth_callbacks" }
- notify_to :users, with_devise: :users
+ notify_to :users
 
 #devise_scope :user do
 #  delete 'sign_out', :to => 'devise/sessions#destroy', :as => :destroy_user_session
