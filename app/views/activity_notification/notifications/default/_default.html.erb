@@ -4,7 +4,7 @@
     <div class="list_image"></div>
     <div class="list_text_wrapper">
       <p class="list_text">
-        <strong><%= notification.notifier.present? ? notification.notifier.printable_notifier_name : 'Someone' %></strong>
+        <strong><%= notification.notifier.present? ? notification.notifier.printable_notifier_name : notification.parameters[:owner]  %></strong>
         <% if notification.group_member_notifier_exists? %>
           <%= " and #{notification.group_member_notifier_count} other" %>
           <%= notification.notifier.present? ? notification.notifier.printable_type.pluralize.downcase : 'people' %>
@@ -20,6 +20,7 @@
           <% if notification.group_member_exists? %>
             <%= " #{notification.group_notification_count} #{notification.notifiable_type.humanize.pluralize.downcase}" %>
           <% else %>
+          <strong><%=  notification.parameters[:restaurant] %></strong>
             <%= " a #{notification.notifiable_type.humanize.singularize.downcase}" %>
           <% end %>
           <%= "in #{notification.group.printable_group_name}" if notification.group.present? %>

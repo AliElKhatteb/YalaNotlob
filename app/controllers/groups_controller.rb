@@ -31,8 +31,8 @@ class GroupsController < ApplicationController
   
   redirect_to action: "index"
   end
+
   def show
-    
      @groups = Group.where(user_id: current_user.id)
 
      @clickedGroup = Group.find(params[:id])

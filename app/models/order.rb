@@ -10,12 +10,10 @@ class Order < ApplicationRecord
 
     acts_as_notifiable :users,
     targets: ->(order, key ) {
-        if key == "you invited to order"
+        if key == "you invited to "
             [User.find(order.usernotify)]
-        else
-            puts "wrong"
         end
-},notifiable_path: :order_notifiable_path 
+} ,notifiable_path: :order_notifiable_path 
 
 
  def order_notifiable_path    
@@ -25,3 +23,23 @@ end
 
 
 end
+
+
+
+# acts_as_notifiable :users,
+# targets: ->(order, key ) {
+#     if key == "invited you to order from"
+#         [User.find(order.invited_users)]
+#     elsif key == "finished an order from"  
+#         p "order finished send notification to invited users"
+#         @ordusers=Orderuser.where(order_id: order.id , status: 1)
+#         @invited_users ||= []
+#         @ordusers.each do |u|
+#             @invited_users << User.find(u.user_id)   
+#            end
+#         p @invited_users
+#         @invited_users
+#     elsif key == "cancelled an order from"  
+#         [User.find(order.invited_users)]
+#     end
+# },notifiable_path: :order_notifiable_path

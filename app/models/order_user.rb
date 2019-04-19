@@ -10,3 +10,4 @@ class OrderUser < ApplicationRecord
 
 
 
+end
