@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  get 'events/index'
   get '/' ,to: 'home#index'
   #get '/groups' ,to: 'groups#index'
   #resources :groups
@@ -28,14 +29,12 @@ resources :orders do
     resources :order_users
     
   end
-  
+  resources :friends
   
   # order_addfriend_url
 
-  get 'event', to: 'events#index'
-  mount ActionCable.server => '/cable'
  devise_for :users, :controllers => { :omniauth_callbacks => "users/omniauth_callbacks" }
-
+ notify_to :users, with_devise: :users
 
 #devise_scope :user do
 #  delete 'sign_out', :to => 'devise/sessions#destroy', :as => :destroy_user_session

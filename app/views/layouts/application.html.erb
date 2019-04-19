@@ -5,8 +5,8 @@
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
 
-    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
-    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+    <%= stylesheet_link_tag    'application'%>
+    <%= javascript_include_tag 'application' %>
   </head>
 
   <body>
@@ -24,7 +24,7 @@
                   </div>  
 
                   <div class="bell-div">
-
+                    <a class="fa fa-bell" style="font-size:24px;color:red" href=""></a>
 
                             <%= link_to "Settings", edit_user_registration_path, class: "dropdown-item" %>
               <%= image_tag user_avatar(current_user, 40), class: "rounded-circle" %>

@@ -1,0 +1,2 @@
+class OrderUsersController < ApplicationController
+end

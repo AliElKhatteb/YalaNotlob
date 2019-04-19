@@ -1,10 +1,8 @@
 <!Doctype html>
 <html>
-   <head>
-		 <link rel="stylesheet" href="addorder.css">
-		 <link rel="stylesheet" href="friends_activity.css">
-        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+	 <head>
+
+       
    </head>
    <body>
 	   
@@ -13,39 +11,123 @@
 	   
 	<!--the form-->
 	 <div class="container">
-     <%= form_with model:  @order do |form| %>
-			  
+	      <%= form_with model:  @order do |form| %>
+			<input type="hidden" id="all" name="all" value="3487"> 
+
             <label for="country">Order for</label>
 			<select id="country" name="order_for">
 			  <option value="lnuch">Lunch</option>
 			  <option value="breakfast">Breakfast</option>
-			</select>
+			</select> <br>
 			  
 			<label for="fname">From</label>
-			<input type="text" id="fname" name="rest_name" placeholder="Your name..">
+			<input type="text" id="fname" name="rest_name" placeholder="restraunt name..">
 
-			<label for="lname">Friends</label>
-			<input type="text" id="lname" name="friends" placeholder="Your last name..">
-            
-            <label for="lname">Groups</label>
-            <input type="text" id="lname" name="groups" placeholder="Your last name..">
+		
+						<label for="lname">Friends</label>
 
-			<input type="file" name="pic" accept="image/*">
+						<select name="friends" id="selectbox" onchange="frindsFunc()">
+						<option >Select Friend ...
+									   <% for friend in @friends %>
+									   <option><%= friend.friend.name %></option>
+									   <% end %> 
+									   </select>
+									   <br>
+									   <label for="lname">Groups</label>
 
-			<input type="submit" value="Submit">
+									   <select name="groups" onclick="groups()" >
+									   <option value="" disabled selected>Select Group...
+									   <% for group in @groups %>
+									   <option><%= group.group_name %></option>
+									   <% end %> 
+									   </select>
+									   <br>
+									   <label for="lname">Menu image</label>
 
-            <% end %>
-	 </div> 
+										<input type="file" name="pic" accept="image/*">
+
+										<input type="submit" value="Submit">
+		
+	
+						<% end %>
+				
+						
+
+						</div> 
 	 
 
 	 <!--the field set-->
-	 <form class="fs">
-		<fieldset>
-		 <legend>Friends invited:</legend>
-		 Friend Name: <input type="text"><br>
-	   <button class="btn danger">Remove</button>
-		</fieldset>
-	 </form>
+	
+	 <div id="invited" class="fs">
+		
+		
+			
 
-   </body>
+	 </div><br>
+
+	 </body>
+	 <script >
+
+	 let frindsSent;
+   
+	 function frindsFunc()
+	 {
+	var parent = document.getElementById('invited')
+	 var friend=document.getElementsByName("friends")[0].value
+	  var div = document.createElement("div");
+	
+	  var para = document.createElement("p");
+	  var btn = document.createElement("button");
+	  btn.addEventListener("click", function(){
+		  var textOpt= btn.previousSibling.textContent; 
+
+		smalldiv=btn.parentNode
+		smalldiv.parentNode.removeChild(smalldiv)
+		btn.parentNode.parentNode
+		var selectbox =document.getElementById('selectbox')
+
+		var opt = document.createElement('option');
+
+    opt.appendChild( document.createTextNode(textOpt ));
+
+         opt.value = textOpt; 
+
+     selectbox.appendChild(opt); 
+	  }); 
+
+	  //para.className="frindsSent"
+
+	
+	  var node = document.createTextNode(friend);
+	 var selectbox = document.getElementById('selectbox')
+
+
+	  para.appendChild(node);
+	  div.appendChild(para);
+	  div.appendChild(btn)
+
+	  parent.appendChild(div)
+	  var selectbox =document.getElementById('selectbox')
+	  value = selectbox.selectedIndex
+	  selectbox.removeChild(selectbox[value])
+	
+	
+	 var frindsSent= document.getElementById('invited').children[0].textContent;
+	console.log(frindsSent)
+	  console.log("vaueof input after set"+document.getElementById('all').value)
+
+	  console.log(frindsSent) 
+
+	}
+
+
+function groups()
+{
+	group=document.getElementsByName("groups")[0].value
+
+
+}
+	
+	
+	 </script>
 </html>

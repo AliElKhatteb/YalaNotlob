@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_04_15_171854) do
+ActiveRecord::Schema.define(version: 2019_04_17_194525) do
 
   create_table "active_storage_attachments", force: :cascade do |t|
     t.string "name", null: false
@@ -33,19 +33,11 @@ ActiveRecord::Schema.define(version: 2019_04_15_171854) do
     t.index ["key"], name: "index_active_storage_blobs_on_key", unique: true
   end
 
-  create_table "events", force: :cascade do |t|
+  create_table "friendships", force: :cascade do |t|
     t.integer "user_id"
-    t.string "message"
+    t.integer "friend_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-  end
-
-  create_table "friends", force: :cascade do |t|
-    t.string "friend_email"
-    t.integer "user_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["user_id"], name: "index_friends_on_user_id"
   end
 
   create_table "groups", force: :cascade do |t|
@@ -79,13 +71,25 @@ ActiveRecord::Schema.define(version: 2019_04_15_171854) do
   end
 
   create_table "notifications", force: :cascade do |t|
-    t.string "from"
-    t.string "to"
-    t.string "type"
-    t.integer "order_id"
+    t.string "target_type", null: false
+    t.integer "target_id", null: false
+    t.string "notifiable_type", null: false
+    t.integer "notifiable_id", null: false
+    t.string "key", null: false
+    t.string "group_type"
+    t.integer "group_id"
+    t.integer "group_owner_id"
+    t.string "notifier_type"
+    t.integer "notifier_id"
+    t.text "parameters"
+    t.datetime "opened_at"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["order_id"], name: "index_notifications_on_order_id"
+    t.index ["group_owner_id"], name: "index_notifications_on_group_owner_id"
+    t.index ["group_type", "group_id"], name: "index_notifications_on_group_type_and_group_id"
+    t.index ["notifiable_type", "notifiable_id"], name: "index_notifications_on_notifiable_type_and_notifiable_id"
+    t.index ["notifier_type", "notifier_id"], name: "index_notifications_on_notifier_type_and_notifier_id"
+    t.index ["target_type", "target_id"], name: "index_notifications_on_target_type_and_target_id"
   end
 
   create_table "order_users", force: :cascade do |t|
@@ -93,6 +97,7 @@ ActiveRecord::Schema.define(version: 2019_04_15_171854) do
     t.integer "user_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "state"
     t.index ["order_id"], name: "index_order_users_on_order_id"
     t.index ["user_id"], name: "index_order_users_on_user_id"
   end
@@ -109,6 +114,24 @@ ActiveRecord::Schema.define(version: 2019_04_15_171854) do
     t.integer "joined"
     t.string "status"
     t.index ["user_id"], name: "index_orders_on_user_id"
+  end
+
+  create_table "subscriptions", force: :cascade do |t|
+    t.string "target_type", null: false
+    t.integer "target_id", null: false
+    t.string "key", null: false
+    t.boolean "subscribing", default: true, null: false
+    t.boolean "subscribing_to_email", default: true, null: false
+    t.datetime "subscribed_at"
+    t.datetime "unsubscribed_at"
+    t.datetime "subscribed_to_email_at"
+    t.datetime "unsubscribed_to_email_at"
+    t.text "optional_targets"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["key"], name: "index_subscriptions_on_key"
+    t.index ["target_type", "target_id", "key"], name: "index_subscriptions_on_target_type_and_target_id_and_key", unique: true
+    t.index ["target_type", "target_id"], name: "index_subscriptions_on_target_type_and_target_id"
   end
 
   create_table "user_friends", force: :cascade do |t|

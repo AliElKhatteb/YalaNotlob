@@ -1,10 +1,13 @@
 <!DOCTYPE html>
 <head>
-    <link rel="stylesheet" type="text/css" href="../assets/css/ordrDetalis.css">.
+
     <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script> 
+ 
+
        </head>
+
 <body>
-  
+
 <table style="width:50%">
     <tr>
       <th>Person</th>
@@ -46,15 +49,41 @@
         <label for="Item"><b>Comment</b></label>
         <input type="text"  name="comment">
         <input type="submit" value="add">
+
         <% end %>
-
-
-      
-
-
-
-
 </div> 
 
+<button name="invited" class="invited" onclick= "view_div1()"> view joined </button>
+<div id="myDIV">
+   <div class="sm"></div>
+</div>
+
+
+<button name="joined" class="joined" onclick= "view_div2()" > view invited </button>
+<div id="myDIV2">
+  <div class="sm"></div>
+</div>
+
+
+<script>
+
+function view_div1() {
+  var x = document.getElementById("myDIV");
+if (x.style.display === "none") {
+  x.style.display = "block";
+} else {
+  x.style.display = "none";
+}
+} 
+
+function view_div2() {
+  var x = document.getElementById("myDIV2");
+if (x.style.display === "none") {
+  x.style.display = "block";
+} else {
+  x.style.display = "none";
+}
+} 
+</script> 
+
 </body>
-<script sr="../assets/javascripts/ordrDetalis.js"></script>

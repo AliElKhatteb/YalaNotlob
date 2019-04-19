@@ -3,15 +3,18 @@ class User < ApplicationRecord
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
-
   has_many :groups , dependent: :destroy
   has_many :friends ,  dependent: :destroy
   has_many :orders  ,  dependent: :destroy
   has_one_attached :avatar
 
+  has_many :friendships
+  has_many :friends, :through => :friendship
 
 devise :omniauthable,:omniauth_providers => [:google_oauth2, :facebook, :twitter, :linkedin]
+# acts_as_target email: :email, email_allowed: :confirmed_at
 
+acts_as_target 
 
    def self.new_with_session(params, session)
       super.tap do |user|
