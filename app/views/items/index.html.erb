@@ -25,8 +25,13 @@ crossorigin="anonymous"></script>
       </tr>
     <% end %>
   </table> <br/>
+ 
   <%= form_with model:  @item do |form| %>
+    <% if flash[:notice] %>
+    <div class="notice"><%= flash[:notice] %></div>
+  <% end %>
        <label for="Item"><b>Item</b></label>
+       
         <input type="text" name="name" >
       
         <label for="Item"><b>Amount</b></label>
