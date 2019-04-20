@@ -1,5 +1,7 @@
-
-
+<head>
+<script src="https://code.jquery.com/jquery-3.1.1.js" integrity="sha256-16cdPddA6VdVInumRGo6IbivbERE8p7CQR3HzTBuELA="
+crossorigin="anonymous"></script>
+</head>
 <body>
 
 <table style="width:50%">
@@ -61,7 +63,7 @@
 <% @invited.each do |inviedUser| %>
   <p><%=inviedUser.user.email  %></p>
   
-  <%= link_to "Remove" ,delete_invited_url(@order_id,inviedUser.user.id),method: "delete" %>
+  <%= link_to "Remove" ,'#', :onclick => 'delJoined()' %>
 <% end %>
  
 
@@ -69,6 +71,20 @@
 
 </body>
 <script>
+function delJoined()
+{
+  console.log("inside fun")
+  $.ajax({
+      type: "DELETE",
+      url: "/items/43/3",
+      data: { product: { name: "Filip", description: "whatever" } },
+      success:(data) ->
+        alert data.id
+        return false
+      error:(data) ->
+        return false
+    })
+}
 function view_div1() {
   var x = document.getElementById("myDIV");
 if (x.style.display === "none") {
