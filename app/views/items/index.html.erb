@@ -37,14 +37,14 @@ crossorigin="anonymous"></script>
         <label for="Item"><b>Amount</b></label>
       
         <div class="value-button" id="decrease" onclick=" decreaseAmount()" value="Decrease Value">-</div>
-        <input type="number" id="number" value="1"name="amount" />
+        <input type="number" id="number" value="0" name="amount" />
         <div class="value-button" id="increase" onclick=" increaseAmount()" value="Increase Value">+</div>
         <br>
          
         <label for="Item"><b>Price</b></label>
       
         <div class="value-button" id="decrease" onclick="decreasePrice()" value="Decrease Value">-</div>
-        <input type="number" id="price" value="1" name="price"/>
+        <input type="number" id="price" value="0" name="price"/>
         <div class="value-button" id="increase" onclick="increasePrice()" value="Increase Value">+</div>
         <br>
         <label for="Item"><b>Comment</b></label>
@@ -76,20 +76,6 @@ crossorigin="anonymous"></script>
 
 </body>
 <script>
-function delJoined()
-{
-  console.log("inside fun")
-  $.ajax({
-      type: "DELETE",
-      url: "/items/43/3",
-      data: { product: { name: "Filip", description: "whatever" } },
-      success:(data) ->
-        alert data.id
-        return false
-      error:(data) ->
-        return false
-    })
-}
 function view_div1() {
   var x = document.getElementById("myDIV");
 if (x.style.display === "none") {
@@ -98,7 +84,6 @@ if (x.style.display === "none") {
   x.style.display = "none";
 }
 } 
-
 function view_div2() {
   var x = document.getElementById("myDIV2");
 if (x.style.display === "none") {
@@ -109,14 +94,14 @@ if (x.style.display === "none") {
 } 
 function increaseAmount() {
     var value = parseInt(document.getElementById('number').value, 10);
-    value = isNaN(value) ? 1 : value;
+    value = isNaN(value) ? 0 : value;
     value++;
     document.getElementById('number').value = value;
   }
   
   function decreaseAmount() {
     var value = parseInt(document.getElementById('number').value, 10);
-    value = isNaN(value) ? 1 : value;
+    value = isNaN(value) ? 0 : value;
     value < 1 ? value = 1 : '';
     value--;
     document.getElementById('number').value = value;
@@ -124,7 +109,7 @@ function increaseAmount() {
   function decreasePrice()
  {
     var value = parseInt(document.getElementById('price').value, 10);
-    value = isNaN(value) ? 1 : value;
+    value = isNaN(value) ? 0 : value;
     value < 1 ? value = 1 : '';
     value--;
     document.getElementById('price').value = value;
@@ -133,7 +118,7 @@ function increaseAmount() {
   function   increasePrice()
   {
     var value = parseInt(document.getElementById('price').value, 10);
-    value = isNaN(value) ? 1 : value;
+    value = isNaN(value) ? 0 : value;
     value < 1 ? value = 1 : '';
     value++;
     document.getElementById('price').value = value;
@@ -145,9 +130,5 @@ function increaseAmount() {
     })
   }
  
-
-
-
-
  
 </script>
