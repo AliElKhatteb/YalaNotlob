@@ -29,7 +29,7 @@
                 <fieldset>
                 <legend> Friends Activity:</legend>
                 <% @orderfriend.each do |order|%>
-                <b ><%= User.find_by_id(order.user_id).name %></b>  has created for <a href="#"><%= order.order_for %></a> from<a href="#"><%= order.rest_name %></a>
+                <b ><%= User.find_by_id(order.user_id).name %></b>  has created for <a href="#"><%= order.order_for %></a> from<a><%= order.rest_name %></a>
                 <br></br>
 
                 <%end%>

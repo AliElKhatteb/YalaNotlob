@@ -3,7 +3,7 @@ class GroupsMembersController < ApplicationController
     @groups = Group.where(user_id: current_user.id)
     # render :action => 'show', :controller => 'groups'
    # render :controller => "groups", :action => "show"
-   render :template => "#{Rails.root}/app/controllers/groups/show"  
+   redirect_to :controller => 'groups' , :action => 'show'
   end
     
     def create
