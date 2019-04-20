@@ -1,10 +1,4 @@
-<!DOCTYPE html>
-<head>
 
-    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script> 
- 
-
-       </head>
 
 <body>
 
@@ -53,20 +47,28 @@
         <% end %>
 </div> 
 
-<button name="invited" class="invited" onclick= "view_div1()"> view joined </button>
+<button name="invited" class="invited" onclick= "view_div1()"> <%= @nuJoined %> user joined click to show</button>
 <div id="myDIV">
-   <div class="sm"></div>
+<% @joined.each do |joinededUser| %>
+  <p><%=joinededUser.user.email  %></p>
+  <%= link_to "Remove" %>
+<% end %>
 </div>
 
 
-<button name="joined" class="joined" onclick= "view_div2()" > view invited </button>
+<button name="joined" class="joined" onclick= "view_div2()"><%= @nuInvited %> user invited click to show</button>
 <div id="myDIV2">
-  <div class="sm"></div>
+<% @invited.each do |inviedUser| %>
+  <p><%=inviedUser.user.email  %></p>
+  
+  <%= link_to "Remove" ,delete_invited_url(@order_id,inviedUser.user.id),method: "delete" %>
+<% end %>
+ 
+
 </div>
 
-
+</body>
 <script>
-
 function view_div1() {
   var x = document.getElementById("myDIV");
 if (x.style.display === "none") {
@@ -84,6 +86,47 @@ if (x.style.display === "none") {
   x.style.display = "none";
 }
 } 
-</script> 
+function increaseAmount() {
+    var value = parseInt(document.getElementById('number').value, 10);
+    value = isNaN(value) ? 0 : value;
+    value++;
+    document.getElementById('number').value = value;
+  }
+  
+  function decreaseAmount() {
+    var value = parseInt(document.getElementById('number').value, 10);
+    value = isNaN(value) ? 0 : value;
+    value < 1 ? value = 1 : '';
+    value--;
+    document.getElementById('number').value = value;
+  }
+  function decreasePrice()
+ {
+    var value = parseInt(document.getElementById('price').value, 10);
+    value = isNaN(value) ? 0 : value;
+    value < 1 ? value = 1 : '';
+    value--;
+    document.getElementById('price').value = value;
+  }
+  
+  function   increasePrice()
+  {
+    var value = parseInt(document.getElementById('price').value, 10);
+    value = isNaN(value) ? 0 : value;
+    value < 1 ? value = 1 : '';
+    value++;
+    document.getElementById('price').value = value;
+  }
+  var list =document.getElementsByClassName('popup')
+  for(var i = 0; i < list.length; i++) {
+    list[i].addEventListener("click", function() {
+     
+    })
+  }
+ 
 
-</body>
+
+
+
+ 
+</script>
