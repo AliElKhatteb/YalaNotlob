@@ -44,9 +44,7 @@
 									   <% end %> 
 									   </select>
 									   <br>
-									   <label for="lname">Menu image</label>
-
-										<input type="file" name="pic" accept="image/*">
+										 <%= form.file_field :menu %>
 
 										<input type="submit" value="Submit">
 		
@@ -81,7 +79,6 @@
 
 	 </body>
 	 <script >
-
 	 let frindsSent;
    
 	 function frindsFunc()
@@ -95,29 +92,21 @@
 		btn.id= "new_btn";
 	  btn.addEventListener("click", function(){
 		  var textOpt= btn.previousSibling.textContent; 
-
 		smalldiv=btn.parentNode
 		smalldiv.parentNode.removeChild(smalldiv)
 		btn.parentNode.parentNode
 		var selectbox =document.getElementById('selectbox')
-
 		var opt = document.createElement('option');
-
     opt.appendChild( document.createTextNode(textOpt ));
-
          opt.value = textOpt; 
-
      selectbox.appendChild(opt); 
 	  }); 
 	
 	  var node = document.createTextNode(friend);
 	 var selectbox = document.getElementById('selectbox')
-
-
 	  para.appendChild(node);
 	  div.appendChild(para);
 	  div.appendChild(btn)
-
 	  parent.appendChild(div)
 	  var selectbox =document.getElementById('selectbox')
 	  value = selectbox.selectedIndex
@@ -129,7 +118,6 @@ var listArray=[];
 for (var i=0;i<frindsSent.length;i++){
 listArray.push(frindsSent[i].textContent);
 }
-
 document.getElementById('all').value=listArray
 
 
@@ -185,7 +173,9 @@ listArrayg.push(groupssSent[i].textContent);
 }
 
 document.getElementById('allg').value=listArrayg
-}
+	
+	}
+
 	
 
 	

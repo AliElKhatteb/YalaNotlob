@@ -46,6 +46,10 @@ class OrdersController < ApplicationController
             @order_user.state = "invited"
             @order_user.save
             x += 1
+            if @order_user.save
+                @order.usernotify=@order_user.user_id.to_s
+                @order.notify :users, key: "you invited to " , parameters: { :order_id => @order[:id] , :restaurant => @order[:rest_name] , :sender => current_user.email }
+            end 
         end
 
     end
@@ -79,6 +83,8 @@ class OrdersController < ApplicationController
             saveFriends(@order,params[:allF])
             saveGroups(@order,params[:allG])
 
+            @order.menu.attach(params[:menu])
+            saveFriendsGroups(@order,params[:all])
             redirect_to  orders_path 
           else
             render 'new'
@@ -106,6 +112,13 @@ class OrdersController < ApplicationController
         redirect_to new_order_path
 
     end
-end
 
+    def display_notification
+        @order = Order.find(params[:format])
+        @order_users=Orderuser.where(order_id: params[:format], user_id: current_user.id) 
+        redirect_to :controller => 'items' , :action => 'index' , :id => params[:format]
+    end
+
+
+end
 
