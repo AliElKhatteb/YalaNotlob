@@ -76,7 +76,14 @@ class ItemsController < ApplicationController
         
         puts params[:idO]
         puts params[:idu]
+        orderown = Order.find(params[:idO])
+     
+        if orderown.user_id == current_user.id 
         OrderUser.where(:user_id => params[:idu], :order_id => params[:idO]).first.destroy
+        redirect_to order_items_path(params[:idO]) 
+        else
+            flash[:notice] = "You don't have permission!"
+        end
         # @order_id = params[:order_id]
         # @items = Item.where(order_id: params[:order_id])
         # #note::check if select return null  render the page with empty array

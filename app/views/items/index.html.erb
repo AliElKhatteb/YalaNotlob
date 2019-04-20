@@ -1,3 +1,5 @@
+<!DOCTYPE html>
+<html>
 <head>
 <script src="https://code.jquery.com/jquery-3.1.1.js" integrity="sha256-16cdPddA6VdVInumRGo6IbivbERE8p7CQR3HzTBuELA="
 crossorigin="anonymous"></script>
@@ -58,7 +60,6 @@ crossorigin="anonymous"></script>
 <div id="myDIV">
 <% @joined.each do |joinededUser| %>
   <p><%=joinededUser.user.email  %></p>
-  <%= link_to "Remove" %>
 <% end %>
 </div>
 
@@ -67,8 +68,7 @@ crossorigin="anonymous"></script>
 <div id="myDIV2">
 <% @invited.each do |inviedUser| %>
   <p><%=inviedUser.user.email  %></p>
-  
-  <%= link_to "Remove" ,'#', :onclick => 'delJoined()' %>
+  <%= link_to "Remove" ,delete_invited_url(@order_id,inviedUser.user.id),method: "delete" %>
 <% end %>
  
 
@@ -76,20 +76,7 @@ crossorigin="anonymous"></script>
 
 </body>
 <script>
-function delJoined()
-{
-  console.log("inside fun")
-  $.ajax({
-      type: "DELETE",
-      url: "/items/43/3",
-      data: { product: { name: "Filip", description: "whatever" } },
-      success:(data) ->
-        alert data.id
-        return false
-      error:(data) ->
-        return false
-    })
-}
+
 function view_div1() {
   var x = document.getElementById("myDIV");
 if (x.style.display === "none") {
@@ -151,3 +138,4 @@ function increaseAmount() {
 
  
 </script>
+</html>
