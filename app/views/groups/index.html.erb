@@ -30,8 +30,8 @@
                             <div>
                             <a href="" class="gname"><%=group.group_name%></a>
                             <%= link_to "add" , group_path(group.id)%>
-                            <button class="addbutton" >add</button>
-                            <button>delete</button>
+
+                            <%= link_to "remove" ,group_path(group.id),method: "delete" %>
                             </div>
                             <%end%>
                         </fieldset>
@@ -49,23 +49,26 @@
                             <div class="space">
                             </div>
                             
-                            <%= form_with scope: :groupsMember, url: groups_path, local: true do |form| %>
-
-                                <%= form.label :group_member %><br>
+                            <%= form_tag("/groups/#{  @group_id}/addFriend", method: "post") do %>
+                            <h> Enter Email of Friend To be Added</h>
                                 <input type="text" name="group_member">    
-                                <%= link_to "addmember" , group_groups_members_path(@group_id)%>
-        <% end %>
-                                <div class="space">
+                                <%= submit_tag("Add", class: "btn btn-success text-light btn-sm") %>                                <div class="space">
                                     </div>
+                                    <%end%>
 
                                 <div>
                                 <%= form_with scope: :group, url: groups_path, local: true do |form| %>
                                     <%if(!@group_member_names)%>
                                     <a href="">no members</a>
                                     <%else %>
-                                    <% @group_member_names.each do |group_member_name| %>
+                                    <% @groupsMembers.each do |group_member_name| %>
                                         
-                                    <a href=""><%=group_member_name%></a></br>
+                                    <p><%=group_member_name.user.name%></p></br>
+                                    <%= link_to "remove" ,delete_member_url(group_member_name.group_id,group_member_name.user_id),method: "delete" %>
+
+
+
+
                                     <%end%>
                                     <%end%>
                                     <%end%>
