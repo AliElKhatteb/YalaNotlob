@@ -59,7 +59,7 @@ class OrdersController < ApplicationController
         @order.user =  current_user 
 
         if @order.save
-            
+            @order.menu.attach(params[:menu])
             saveFriendsGroups(@order,params[:all])
             redirect_to  orders_path 
           else

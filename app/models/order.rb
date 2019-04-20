@@ -6,6 +6,7 @@ class Order < ApplicationRecord
   # has_many :users
   has_many :groups
 
+  has_one_attached :menu
  
 
     acts_as_notifiable :users,
