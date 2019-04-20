@@ -30,4 +30,4 @@ class OrderUser < ApplicationRecord
 end
 
 
-end
+
