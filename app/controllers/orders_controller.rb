@@ -94,6 +94,12 @@ class OrdersController < ApplicationController
     def index
 
         @orders = Order.where(:user => current_user)
+        # @joined = OrderUser.where(order_id: params[:order_id],state:"joined")
+        # @nuJoined= @joined.length
+        # @invited = OrderUser.where(order_id: params[:order_id],state:"invited")
+        
+        # @nuInvited=@invited.length
+
     end
     def update
         order=Order.find(params[:id])

@@ -33,10 +33,14 @@ tr:nth-child(even) {
   </tr>
   <% @orders.each do |order| %>
     <tr>
+    <%  @joined = OrderUser.where(order_id: order.id,state:"joined")%>
+    <% @nuJoined= @joined.length%>
+    <%  @invited = OrderUser.where(order_id: order.id,state:"invited")%>
+    <% @nuInvited=@invited.length %>
       <td><%= order.order_for %></td>
       <td><%= order.rest_name %></td>
-      <td><%= order.invited %></td>
-      <td><%= order.joined %></td>
+      <td><%= @nuInvited %></td>
+      <td><%= @nuJoined %></td>
       <td><%= order.status %></td>
       <td>
       <%= link_to "view" , order_items_path(order.id) %>
