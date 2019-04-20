@@ -1,5 +1,33 @@
 class ItemsController < ApplicationController
+    
+    
     def index
+            flag = false
+            @orderusersid =[]
+             puts params[:order_id]
+             puts "dina"
+            orderowner = Order.find(params[:order_id])
+            puts orderowner.user_id
+            puts current_user.id
+            @orderusers = OrderUser.where(order_id: params[:order_id])
+            for orderuser in @orderusers 
+                @orderusersid.push(orderuser.user_id)
+            end
+                
+        if orderowner.user_id == current_user.id
+            flag = true
+        else
+         for orderuserid in @orderusersid do
+            if orderuserid == current_user.id 
+                flag = true
+        end
+        end
+    end
+           if flag == false
+              flash[:notice] = "You don't have access to that order!"
+              redirect_to  user_session_path(session[:user_id])
+           else
+           
         #check if user not invited in this order don't show him this page
         @order_id = params[:order_id]
         @items = Item.where(order_id: params[:order_id])
@@ -10,7 +38,7 @@ class ItemsController < ApplicationController
         @invited = OrderUser.where(order_id: params[:order_id],state:"invited")
         
         @nuInvited=@invited.length
-    
+    end
     end
     def create
         @item = Item.new
