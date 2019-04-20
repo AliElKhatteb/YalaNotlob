@@ -81,11 +81,10 @@
                     <div class="inner-div">
                         <fieldset class="inner-div">
             
-        
+        <%if @group_name == "group_name"%>
             <legend><%= @group_name %></legend>
-          
-
-                            
+            <%else%>
+            <legend><%= @group_name %></legend>
                             <div class="space">
                             </div>
                             
@@ -119,6 +118,7 @@
                                     <%end%>
                                     <%end%>
                                 </div>
+                                <%end%>
 
                         </fieldset>
                     </div>
@@ -127,9 +127,9 @@
                 <script>
                 function addbutton(groupname,i)
                 {
-
-                    document.getElementById('groupname').textContent=groupname
+groupname').textContent=groupname
                 }
+                    document.getElementById('
                 arrbtn = document.getElementsByClassName('addbutton')
                 for (let i = 0; i < arrbtn.length; i++) {
                     arrbtn[i].addEventListener("click", function () {
