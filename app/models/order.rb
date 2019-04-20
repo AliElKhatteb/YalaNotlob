@@ -3,6 +3,11 @@ class Order < ApplicationRecord
   has_many :items, :dependent => :delete_all
 
 
+
+  # validates :order_for, :presence => true
+  # validates :rest_name, :presence => true
+  
+
   # has_many :users
   has_many :groups
 
