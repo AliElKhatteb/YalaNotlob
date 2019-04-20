@@ -22,7 +22,7 @@ class OrdersController < ApplicationController
             x += 1
             if @order_user.save
                 @order.usernotify=@order_user.user_id.to_s
-                @order.notify :users, key: "you invited to " , parameters: { :restaurant => @order[:rest_name] , :sender => current_user.email }
+                @order.notify :users, key: "you invited to " , parameters: { :order_id => @order[:id] , :restaurant => @order[:rest_name] , :sender => current_user.email }
             end 
         end
        
@@ -90,15 +90,11 @@ class OrdersController < ApplicationController
 
     end
 
-def display_notification
-    @order = Order.find(params[:format])
-    @order_users=Orderuser.where(order_id: params[:format], user_id: current_user.id) 
-    # @order_users.first.status =1
-    # @order_users.first.save
-
-    redirect_to :controller => 'item' , :action => 'index' , :id => params[:format]
-end
-
+    def display_notification
+        @order = Order.find(params[:format])
+        @order_users=Orderuser.where(order_id: params[:format], user_id: current_user.id) 
+        redirect_to :controller => 'items' , :action => 'index' , :id => params[:format]
+    end
 
 
 end

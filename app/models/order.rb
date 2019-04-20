@@ -16,8 +16,9 @@ class Order < ApplicationRecord
 } ,notifiable_path: :order_notifiable_path 
 
 
- def order_notifiable_path    
-        order_display_notification_path(id)
+ def order_notifiable_path   
+  order_items_path(id)
+        #orders_display_notification_path(id)
 end
   
 
