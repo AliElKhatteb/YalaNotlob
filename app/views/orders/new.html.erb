@@ -1,7 +1,7 @@
 <!Doctype html>
 <html>
 	 <head>
-
+		
        
    </head>
    <body>
@@ -12,7 +12,9 @@
 	<!--the form-->
 	 <div class="container">
 	      <%= form_with model:  @order do |form| %>
-			<input type="hidden" id="all" name="all" value="3487"> 
+			<input type="hidden" id="all" name="allF" value="3487">
+			<input type="hidden" id="allg" name="allG" value="3487"> 
+
 
             <label for="country">Order for</label>
 			<select id="country" name="order_for">
@@ -32,11 +34,11 @@
 									   <option><%= friend.friend.email %></option>
 									   <% end %> 
 									   </select>
-									   <br>
+										 <br>
+										 
 									   <label for="lname">Groups</label>
-
-									   <select name="groups" onclick="groups()" >
-									   <option value="" disabled selected>Select Group...
+										<select name="groups" id="selectboxg" onchange="groupsFunc()" >
+									   <option >Select Group...
 									   <% for group in @groups %>
 									   <option><%= group.group_name %></option>
 									   <% end %> 
@@ -55,13 +57,25 @@
 	 
 
 	 <!--the field set-->
-	
-	 <div id="invited" class="fs">
-		
-		
-			
+	<div class="cont">
+			<div class="in">
+			<div id="invitedU" class="fs">
+				
+				
+					
 
-	 </div><br>
+			</div><br>
+			</div>
+			<div class="in" >
+			<div id="invitedG" class="fs">
+				
+				
+					
+
+			</div><br>
+			</div>
+	 
+</div>
 
 	 </body>
 	 <script >
@@ -69,12 +83,13 @@
    
 	 function frindsFunc()
 	 {
-	var parent = document.getElementById('invited')
+	var parent = document.getElementById('invitedU')
 	 var friend=document.getElementsByName("friends")[0].value
 	  var div = document.createElement("div");
 	
 	  var para = document.createElement("p");
-	  var btn = document.createElement("button");
+		var btn = document.createElement("button");
+		btn.id= "new_btn";
 	  btn.addEventListener("click", function(){
 		  var textOpt= btn.previousSibling.textContent; 
 		smalldiv=btn.parentNode
@@ -86,7 +101,6 @@
          opt.value = textOpt; 
      selectbox.appendChild(opt); 
 	  }); 
-	  //para.className="frindsSent"
 	
 	  var node = document.createTextNode(friend);
 	 var selectbox = document.getElementById('selectbox')
@@ -99,21 +113,71 @@
 	  selectbox.removeChild(selectbox[value])
 	
 	
-	var frindsSent= document.getElementById('invited').children;
+var frindsSent= document.getElementById('invitedU').children;
 var listArray=[];
 for (var i=0;i<frindsSent.length;i++){
 listArray.push(frindsSent[i].textContent);
 }
 document.getElementById('all').value=listArray
-	//console.log(frindsSent)
-	  //console.log("vaueof input after set"+document.getElementById('all').value)
-	  //console.log(frindsSent) 
+
+
 	}
-function groups()
+
+
+function groupsFunc()
 {
-	group=document.getElementsByName("groups")[0].value
-}
+	var parent = document.getElementById('invitedG')
+	 var group=document.getElementsByName("groups")[0].value
+	  var div = document.createElement("div");
 	
+	  var para = document.createElement("p");
+		var btn = document.createElement("button");
+		btn.id= "new_btn";
+	  btn.addEventListener("click", function(){
+		  var textOpt= btn.previousSibling.textContent; 
+
+		smalldiv=btn.parentNode
+		smalldiv.parentNode.removeChild(smalldiv)
+		btn.parentNode.parentNode
+		var selectbox =document.getElementById('selectboxg')
+
+		var opt = document.createElement('option');
+
+    opt.appendChild( document.createTextNode(textOpt ));
+
+         opt.value = textOpt; 
+
+     selectbox.appendChild(opt); 
+	  }); 
+
+
+	
+	  var node = document.createTextNode(group);
+	 var selectbox = document.getElementById('selectboxg')
+
+
+	  para.appendChild(node);
+	  div.appendChild(para);
+	  div.appendChild(btn)
+
+	  parent.appendChild(div)
+	  var selectbox =document.getElementById('selectboxg')
+	  value = selectbox.selectedIndex
+	  selectbox.removeChild(selectbox[value])
+	
+	
+	var groupssSent= document.getElementById('invitedG').children;
+var listArrayg=[];
+for (var i=0;i<groupssSent.length;i++){
+listArrayg.push(groupssSent[i].textContent);
+}
+
+document.getElementById('allg').value=listArrayg
+	
+	}
+
+	
+
 	
 	 </script>
 </html>

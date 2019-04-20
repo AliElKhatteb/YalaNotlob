@@ -1,6 +1,46 @@
 <!DOCTYPE html>
 
 <html>
+<head>
+  <style>
+  .header{
+    margin-left: -100px;
+    position: relative;
+    top: 30px;
+  }
+
+  .get_left{
+      margin-left:-300px;
+  }
+
+  .text{
+      margin-left: 50px;
+      position: relative;
+      top: 30px;
+      left: -100px;
+  }
+
+  .btn{
+      position: relative;
+      top: 30px;
+      left: -100px;
+      color: blue;
+      width: 150px;
+  }
+
+  .members{
+      position: relative;
+      left: -230px;
+      top: 13px;
+  }
+
+  .friend{
+      position: relative;
+      left: -400px;
+      top: 40px;
+  }
+  </style>
+</head>
 
 <body> 
                 <div class="body-div">
@@ -41,30 +81,35 @@
                     <div class="inner-div">
                         <fieldset class="inner-div">
             
-        
+        <%if @group_name == "group_name"%>
             <legend><%= @group_name %></legend>
-          
-
-                            
+            <%else%>
+            <legend><%= @group_name %></legend>
                             <div class="space">
                             </div>
                             
                             <%= form_tag("/groups/#{  @group_id}/addFriend", method: "post") do %>
-                            <h> Enter Email of Friend To be Added</h>
-                                <input type="text" name="group_member">    
+
+                            <div class="get_left">
+                                <h class="header">Enter email of friend to be added:</h>
+                                <input type="text" name="group_member" class="text">    
                                 <%= submit_tag("Add", class: "btn btn-success text-light btn-sm") %>                                <div class="space">
                                     </div>
                                     <%end%>
 
+                            </div>
+
                                 <div>
                                 <%= form_with scope: :group, url: groups_path, local: true do |form| %>
                                     <%if(!@group_member_names)%>
-                                    <a href="">no members</a>
+                                    <a href="" class="members">no members</a>
                                     <%else %>
                                     <% @groupsMembers.each do |group_member_name| %>
-                                        
-                                    <p><%=group_member_name.user.name%></p></br>
-                                    <%= link_to "remove" ,delete_member_url(group_member_name.group_id,group_member_name.user_id),method: "delete" %>
+                                     
+                                    <div class="friend">
+                                        <p><%=group_member_name.user.name%></p>
+                                        <%= link_to "remove" ,delete_member_url(group_member_name.group_id,group_member_name.user_id),method: "delete" %>
+                                    </div>
 
 
 
@@ -73,6 +118,7 @@
                                     <%end%>
                                     <%end%>
                                 </div>
+                                <%end%>
 
                         </fieldset>
                     </div>
@@ -81,9 +127,9 @@
                 <script>
                 function addbutton(groupname,i)
                 {
-
-                    document.getElementById('groupname').textContent=groupname
+groupname').textContent=groupname
                 }
+                    document.getElementById('
                 arrbtn = document.getElementsByClassName('addbutton')
                 for (let i = 0; i < arrbtn.length; i++) {
                     arrbtn[i].addEventListener("click", function () {

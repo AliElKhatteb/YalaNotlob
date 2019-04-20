@@ -1,3 +1,31 @@
 // Place all the styles related to the orders controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+.in{
+    width: 500px;
+    height: 500px;
+    margin-left: 100px;
+    border-style: solid;
+    border-color: gray;
+    margin-top: 70px;
+    border-width: 0.1px;
+    float: left;
+}
+
+#invited{
+    margin-left: 50px;
+    width: 300px;
+    margin-top: 50px;
+    height: 50px;
+    border-radius: 15px;
+    margin-bottom: 200px;
+}
+
+.button{
+    width: 500px;
+    color: red;
+}
+
+.cont{
+    display: block;
+}

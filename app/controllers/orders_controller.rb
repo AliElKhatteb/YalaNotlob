@@ -6,7 +6,34 @@ class OrdersController < ApplicationController
        
        @order=Order.new
     end
-    def saveFriendsGroups(order,friends)
+    def saveGroups(order,groups)
+        arrGroups=groups.split(',')
+        puts "arrgroups"
+        puts arrGroups
+        y=1
+        i=1
+        arrGroups.each do |group|
+            searched_group = Group.where(group_name: group)
+            puts "searched g"
+            puts searched_group.first
+            membersG = GroupsMember.where(group: searched_group.first)
+            puts "group"
+            puts membersG.first.user.email
+            membersG.each do |member|
+            # @usr = User.where(email:friend)
+            @order_user =OrderUser.new
+            @order_user.order = order
+            @order_user.user = member.user
+            @order_user.state = "invited"
+            @order_user.save
+            i += 1
+
+            end
+            y += 1
+
+        end
+    end
+    def saveFriends(order,friends)
 
         arrFriends=friends.split(',')
  
@@ -24,13 +51,6 @@ class OrdersController < ApplicationController
                 @order.notify :users, key: "you invited to " , parameters: { :order_id => @order[:id] , :restaurant => @order[:rest_name] , :sender => current_user.email }
             end 
         end
-       
-
-        
-
-
-    #  redirect_to  orders_path 
-
 
     end
 
@@ -59,6 +79,10 @@ class OrdersController < ApplicationController
         @order.user =  current_user 
 
         if @order.save
+            
+            saveFriends(@order,params[:allF])
+            saveGroups(@order,params[:allG])
+
             @order.menu.attach(params[:menu])
             saveFriendsGroups(@order,params[:all])
             redirect_to  orders_path 
@@ -70,6 +94,12 @@ class OrdersController < ApplicationController
     def index
 
         @orders = Order.where(:user => current_user)
+        # @joined = OrderUser.where(order_id: params[:order_id],state:"joined")
+        # @nuJoined= @joined.length
+        # @invited = OrderUser.where(order_id: params[:order_id],state:"invited")
+        
+        # @nuInvited=@invited.length
+
     end
     def update
         order=Order.find(params[:id])
