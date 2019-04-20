@@ -28,7 +28,7 @@ class OrdersController < ApplicationController
             @order_user.state = "invited"
             @order_user.save
             i += 1
-
+           
             end
         else
             next 
@@ -44,6 +44,12 @@ class OrdersController < ApplicationController
         x = 1
         arrFriends.each do |friend|
             @usr = User.where(email:friend)
+            @user = @usr.first
+            if OrderUser.exists?(:user_id => @user.id)                
+                puts "inside id"
+                next
+            else
+                puts "inside else"
             @order_user =OrderUser.new
             @order_user.order = order
             @order_user.user = @usr[0]
@@ -55,7 +61,7 @@ class OrdersController < ApplicationController
                 @order.notify :users, key: "you invited to " , parameters: { :order_id => @order[:id] , :restaurant => @order[:rest_name] , :sender => current_user.email }
             end 
         end
-
+    end
     end
 
 
@@ -83,9 +89,9 @@ class OrdersController < ApplicationController
         @order.user =  current_user 
 
         if @order.save
-            
-            saveFriends(@order,params[:allF])
             saveGroups(@order,params[:allG])
+
+            saveFriends(@order,params[:allF])
 
             @order.menu.attach(params[:menu])
             redirect_to  orders_path 

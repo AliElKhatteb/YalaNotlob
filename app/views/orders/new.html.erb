@@ -1,7 +1,7 @@
 <!Doctype html>
 <html>
 	 <head>
-		
+
        
    </head>
    <body>
@@ -31,7 +31,8 @@
 						<select name="friends" id="selectbox" onchange="frindsFunc()">
 						<option >Select Friend ...
 									   <% for friend in @friends %>
-									   <option><%= friend.friend.email %></option>
+										 <option><%= friend.friend.email %></option>
+										 <
 									   <% end %> 
 									   </select>
 										 <br>
@@ -58,21 +59,16 @@
 
 	 <!--the field set-->
 	<div class="cont">
+
 			<div class="in">
-			<div id="invitedU" class="fs">
-				
-				
-					
-
-			</div><br>
+			
+				<div id="invitedU" class="fs">
+				</div><br>
 			</div>
-			<div class="in" >
-			<div id="invitedG" class="fs">
-				
-				
-					
 
-			</div><br>
+			<div class="in" >
+				<div id="invitedG" class="fs">
+				</div><br>
 			</div>
 	 
 </div>
@@ -87,9 +83,12 @@
 	 var friend=document.getElementsByName("friends")[0].value
 	  var div = document.createElement("div");
 	
-	  var para = document.createElement("p");
+		var para = document.createElement("p");
+		
+	   
 		var btn = document.createElement("button");
-		btn.id= "new_btn";
+		btn.innerHTML = "Remove";
+	
 	  btn.addEventListener("click", function(){
 		  var textOpt= btn.previousSibling.textContent; 
 		smalldiv=btn.parentNode
@@ -132,7 +131,7 @@ function groupsFunc()
 	
 	  var para = document.createElement("p");
 		var btn = document.createElement("button");
-		btn.id= "new_btn";
+		btn.innerHTML = "Remove"
 	  btn.addEventListener("click", function(){
 		  var textOpt= btn.previousSibling.textContent; 
 
