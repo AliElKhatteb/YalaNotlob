@@ -31,7 +31,8 @@
 						<select name="friends" id="selectbox" onchange="frindsFunc()">
 						<option >Select Friend ...
 									   <% for friend in @friends %>
-									   <option><%= friend.friend.email %></option>
+										 <option><%= friend.friend.email %></option>
+										 <
 									   <% end %> 
 									   </select>
 										 <br>
@@ -60,6 +61,7 @@
 	<div class="cont">
 
 			<div class="in">
+			
 				<div id="invitedU" class="fs">
 				</div><br>
 			</div>
@@ -85,7 +87,8 @@
 		
 	   
 		var btn = document.createElement("button");
-		btn.id= "new_btn";
+		btn.innerHTML = "Remove";
+	
 	  btn.addEventListener("click", function(){
 		  var textOpt= btn.previousSibling.textContent; 
 		smalldiv=btn.parentNode
