@@ -41,6 +41,12 @@ class ItemsController < ApplicationController
     end
     end
     def create
+        orderstatus = Order.find(params[:order_id])
+        orderstatus = orderstatus.status
+        if orderstatus == "finished"
+            flash[:notice] = "sorry...order has finished.. you can't add item any more"
+            redirect_to action: "index"
+        else
         @item = Item.new
         @item.item_name = params[:name]
         @item.item_amount = params[:amount]
@@ -64,7 +70,7 @@ class ItemsController < ApplicationController
        end
      
 
-   
+    end
     end
     def deleteInvited
         
