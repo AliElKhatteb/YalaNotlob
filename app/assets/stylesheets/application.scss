@@ -17,3 +17,30 @@
 
 @import"style";
 @import "layout";
+
+.size .field {
+    width:100px; 
+    left:600px;
+    position:relative;
+    color: #333; padding:5px; border:none; cursor:pointer;
+    font-family:'lucida sans unicode',sans-serif; font-size:1em;
+    -webkit-transition: all .4s ease-in-out;
+    transition: all .4s ease-in-out;
+}
+
+.size .field:hover {
+   position:relative;
+    border:solid 1px #fff;
+    -moz-box-shadow:0 0 5px #999; -webkit-box-shadow:0 0 5px #999; box-shadow:0 0 5px #999
+}
+
+.size>ul.list { 
+    display:none;
+    position:absolute; left: 65em; z-index:999;
+    width:350px;
+    margin:0; padding:0px; list-style:none;
+    background:#fff; color:#333;
+    -moz-border-radius:5px; -webkit-border-radius:5px; border-radius:5px;
+    -moz-box-shadow:0 0 5px #999; -webkit-box-shadow:0 0 5px #999; box-shadow:0 0 5px #999
+}
+
