@@ -1,5 +1,7 @@
-
-
+<head>
+<script src="https://code.jquery.com/jquery-3.1.1.js" integrity="sha256-16cdPddA6VdVInumRGo6IbivbERE8p7CQR3HzTBuELA="
+crossorigin="anonymous"></script>
+</head>
 <body>
 
 <table style="width:50%">
@@ -23,21 +25,26 @@
       </tr>
     <% end %>
   </table> <br/>
+ 
   <%= form_with model:  @item do |form| %>
+    <% if flash[:notice] %>
+    <div class="notice"><%= flash[:notice] %></div>
+  <% end %>
        <label for="Item"><b>Item</b></label>
+       
         <input type="text" name="name" >
       
         <label for="Item"><b>Amount</b></label>
       
         <div class="value-button" id="decrease" onclick=" decreaseAmount()" value="Decrease Value">-</div>
-        <input type="number" id="number" value="0"name="amount" />
+        <input type="number" id="number" value="1"name="amount" />
         <div class="value-button" id="increase" onclick=" increaseAmount()" value="Increase Value">+</div>
         <br>
          
         <label for="Item"><b>Price</b></label>
       
         <div class="value-button" id="decrease" onclick="decreasePrice()" value="Decrease Value">-</div>
-        <input type="number" id="price" value="0" name="price"/>
+        <input type="number" id="price" value="1" name="price"/>
         <div class="value-button" id="increase" onclick="increasePrice()" value="Increase Value">+</div>
         <br>
         <label for="Item"><b>Comment</b></label>
@@ -61,7 +68,7 @@
 <% @invited.each do |inviedUser| %>
   <p><%=inviedUser.user.email  %></p>
   
-  <%= link_to "Remove" ,delete_invited_url(@order_id,inviedUser.user.id),method: "delete" %>
+  <%= link_to "Remove" ,'#', :onclick => 'delJoined()' %>
 <% end %>
  
 
@@ -69,6 +76,20 @@
 
 </body>
 <script>
+function delJoined()
+{
+  console.log("inside fun")
+  $.ajax({
+      type: "DELETE",
+      url: "/items/43/3",
+      data: { product: { name: "Filip", description: "whatever" } },
+      success:(data) ->
+        alert data.id
+        return false
+      error:(data) ->
+        return false
+    })
+}
 function view_div1() {
   var x = document.getElementById("myDIV");
 if (x.style.display === "none") {
@@ -88,14 +109,14 @@ if (x.style.display === "none") {
 } 
 function increaseAmount() {
     var value = parseInt(document.getElementById('number').value, 10);
-    value = isNaN(value) ? 0 : value;
+    value = isNaN(value) ? 1 : value;
     value++;
     document.getElementById('number').value = value;
   }
   
   function decreaseAmount() {
     var value = parseInt(document.getElementById('number').value, 10);
-    value = isNaN(value) ? 0 : value;
+    value = isNaN(value) ? 1 : value;
     value < 1 ? value = 1 : '';
     value--;
     document.getElementById('number').value = value;
@@ -103,7 +124,7 @@ function increaseAmount() {
   function decreasePrice()
  {
     var value = parseInt(document.getElementById('price').value, 10);
-    value = isNaN(value) ? 0 : value;
+    value = isNaN(value) ? 1 : value;
     value < 1 ? value = 1 : '';
     value--;
     document.getElementById('price').value = value;
@@ -112,7 +133,7 @@ function increaseAmount() {
   function   increasePrice()
   {
     var value = parseInt(document.getElementById('price').value, 10);
-    value = isNaN(value) ? 0 : value;
+    value = isNaN(value) ? 1 : value;
     value < 1 ? value = 1 : '';
     value++;
     document.getElementById('price').value = value;

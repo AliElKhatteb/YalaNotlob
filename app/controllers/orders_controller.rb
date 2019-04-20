@@ -17,6 +17,7 @@ class OrdersController < ApplicationController
             puts "searched g"
             puts searched_group.first
             membersG = GroupsMember.where(group: searched_group.first)
+            unless membersG.empty?
             puts "group"
             puts membersG.first.user.email
             membersG.each do |member|
@@ -29,6 +30,9 @@ class OrdersController < ApplicationController
             i += 1
 
             end
+        else
+            next 
+        end
             y += 1
 
         end
@@ -84,7 +88,6 @@ class OrdersController < ApplicationController
             saveGroups(@order,params[:allG])
 
             @order.menu.attach(params[:menu])
-            saveFriendsGroups(@order,params[:all])
             redirect_to  orders_path 
           else
             render 'new'
@@ -94,6 +97,12 @@ class OrdersController < ApplicationController
     def index
 
         @orders = Order.where(:user => current_user)
+        # @joined = OrderUser.where(order_id: params[:order_id],state:"joined")
+        # @nuJoined= @joined.length
+        # @invited = OrderUser.where(order_id: params[:order_id],state:"invited")
+        
+        # @nuInvited=@invited.length
+
     end
     def update
         order=Order.find(params[:id])

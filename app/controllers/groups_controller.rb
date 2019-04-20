@@ -10,16 +10,19 @@ class GroupsController < ApplicationController
     puts "groupps" 
     puts @groups 
     @group_id = 0
-    
-
-    # @groupsMembers = GroupsMember.where(group_id: 15)
-    # @ww=@groupsMembers[0].group.group_name
-    # #@group_name = "Group Name"
-    # puts @ww
-    # puts "gggggggggggggggg"
   end
   def create
     unless params[:group_name].empty?
+  allgroups = Group.all
+  flag = false                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                   
+  for group in allgroups
+  puts "llllllllllllllllllll"
+  puts group.group_name
+  if group.group_name == params[:group_name]
+   flag = true
+  end
+end
+if flag == false
 
   @group = Group.new()
   @group.group_name= params[:group_name]
@@ -31,10 +34,13 @@ class GroupsController < ApplicationController
   @groupsMember.group_id = 22
   @groupsMember.save
   
+    redirect_to action: "index"
+else
   redirect_to action: "index"
+end
     
   else
-    redirect_to action: "index"
+     redirect_to action: "index"
 
   end
   end
@@ -85,6 +91,7 @@ class GroupsController < ApplicationController
 
    @usergr= current_user.friendships.where(friend_id: @usergr1.first.id)
    unless @usergr.empty?
+    # if @current_group == 0//////////////
   @current_group = Group.find(params[:id])
     if @current_group.groups_members.exists? user: @usergr.first.friend.id 
      
