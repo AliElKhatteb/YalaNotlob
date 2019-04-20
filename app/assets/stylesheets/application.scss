@@ -20,15 +20,14 @@
 
 .size .field {
     width:100px; 
+    left:600px;
+    position:relative;
     color: #333; padding:5px; border:none; cursor:pointer;
     font-family:'lucida sans unicode',sans-serif; font-size:1em;
     -webkit-transition: all .4s ease-in-out;
     transition: all .4s ease-in-out;
 }
-.field{
-  position: relative;
-  left:800px;
-}
+
 .size .field:hover {
    position:relative;
     border:solid 1px #fff;
