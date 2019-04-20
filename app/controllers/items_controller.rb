@@ -1,7 +1,7 @@
 class ItemsController < ApplicationController
     def index
         #check if user not invited in this order don't show him this page
-       
+        @order_id = params[:order_id]
         @items = Item.where(order_id: params[:order_id])
         #note::check if select return null  render the page with empty array
         #catch error of null
@@ -38,6 +38,25 @@ class ItemsController < ApplicationController
 
    
     end
+    def deleteInvited
+        
+        puts params[:idO]
+        puts params[:idu]
+        OrderUser.where(:user_id => params[:idu], :order_id => params[:idO]).first.destroy
+        # @order_id = params[:order_id]
+        # @items = Item.where(order_id: params[:order_id])
+        # #note::check if select return null  render the page with empty array
+        # #catch error of null
+        # @joined = OrderUser.where(order_id: params[:order_id],state:"joined")
+        # @nuJoined= @joined.length
+        # @invited = OrderUser.where(order_id: params[:order_id],state:"invited")
+        
+        # @nuInvited=@invited.length
+        # render 'index'
+
+        
+    end
+
 
 
     # private

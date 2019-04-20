@@ -13,7 +13,6 @@ class OrdersController < ApplicationController
         x = 1
         arrFriends.each do |friend|
             @usr = User.where(email:friend)
-            puts @usr[0].id
             @order_user =OrderUser.new
             @order_user.order = order
             @order_user.user = @usr[0]

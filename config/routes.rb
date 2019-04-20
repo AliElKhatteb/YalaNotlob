@@ -8,6 +8,9 @@ Rails.application.routes.draw do
     resources :groups_members
     
   end
+  post '/groups/:id/addFriend' , to: 'groups#addMember'
+  delete 'group/:id/:uid' ,to: 'groups#deleteMember', as: "delete_member"
+  delete 'items/:idO/:idu' ,to: 'items#deleteInvited' , as: "delete_invited"
 #   get 'friends', to: 'friends#friendhome'
 #   post 'friends', to: 'friends#adduser'
 #   delete '/friends/:id', to: 'friends#destroy', as:"delete_user"
