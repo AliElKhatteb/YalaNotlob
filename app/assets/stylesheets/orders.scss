@@ -12,9 +12,18 @@
     float: left;
 }
 
-#invited{
+#invitedU{
     margin-left: 50px;
-    width: 300px;
+    width: 120px;
+    margin-top: 50px;
+    height: 50px;
+    border-radius: 15px;
+    margin-bottom: 200px;
+}
+
+#invitedG{
+    margin-left: 50px;
+    width: 120px;
     margin-top: 50px;
     height: 50px;
     border-radius: 15px;
@@ -28,4 +37,8 @@
 
 .cont{
     display: block;
+}
+
+.invitedU{
+    margin-left: 600px;
 }
