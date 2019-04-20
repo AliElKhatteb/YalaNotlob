@@ -9,6 +9,7 @@
     border-color: gray;
     margin-top: 70px;
     border-width: 0.1px;
+    float: left;
 }
 
 #invited{
@@ -25,3 +26,6 @@
     color: red;
 }
 
+.cont{
+    display: block;
+}

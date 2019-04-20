@@ -6,7 +6,34 @@ class OrdersController < ApplicationController
        
        @order=Order.new
     end
-    def saveFriendsGroups(order,friends)
+    def saveGroups(order,groups)
+        arrGroups=groups.split(',')
+        puts "arrgroups"
+        puts arrGroups
+        y=1
+        i=1
+        arrGroups.each do |group|
+            searched_group = Group.where(group_name: group)
+            puts "searched g"
+            puts searched_group.first
+            membersG = GroupsMember.where(group: searched_group.first)
+            puts "group"
+            puts membersG.first.user.email
+            membersG.each do |member|
+            # @usr = User.where(email:friend)
+            @order_user =OrderUser.new
+            @order_user.order = order
+            @order_user.user = member.user
+            @order_user.state = "invited"
+            @order_user.save
+            i += 1
+
+            end
+            y += 1
+
+        end
+    end
+    def saveFriends(order,friends)
 
         arrFriends=friends.split(',')
  
@@ -20,13 +47,6 @@ class OrdersController < ApplicationController
             @order_user.save
             x += 1
         end
-       
-
-        
-
-
-    #  redirect_to  orders_path 
-
 
     end
 
@@ -56,7 +76,9 @@ class OrdersController < ApplicationController
 
         if @order.save
             
-            saveFriendsGroups(@order,params[:all])
+            saveFriends(@order,params[:allF])
+            saveGroups(@order,params[:allG])
+
             redirect_to  orders_path 
           else
             render 'new'
