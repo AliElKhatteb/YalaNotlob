@@ -45,7 +45,7 @@ class OrdersController < ApplicationController
         arrFriends.each do |friend|
             @usr = User.where(email:friend)
             @user = @usr.first
-            if OrderUser.exists?(:user_id => @user.id)                
+            if OrderUser.exists?(:user_id => @user.id, :order => order)                
                 puts "inside id"
                 next
             else
@@ -76,10 +76,11 @@ class OrdersController < ApplicationController
 
     def create
         puts "cccreaaate"
-        puts params[:all]
-        @order_user=OrderUser.new
-        @order_user.user= current_user
-        @order_user.order 
+        puts params[:allG]
+        puts params[:allF]
+        # @order_user=OrderUser.new
+        # @order_user.user= current_user
+        # @order_user.order 
         
         #add the fiends or groups to table order_user
         @order = Order.new
